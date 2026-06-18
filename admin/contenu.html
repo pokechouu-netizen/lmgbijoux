@@ -58,8 +58,12 @@
     <!-- PHOTOS -->
     <div class="panel" id="panel-photos">
       <div class="panel-header"><h2>Photos clés du site</h2></div>
-      <p class="panel-hint">Cliquez sur une photo pour la remplacer (logo, accueil, atelier, boutique). Le changement s'applique automatiquement.<br>💍 Les <strong>photos de bijoux</strong> se modifient dans la section <a href="creations.html"><strong>Galerie</strong> →</a></p>
+      <p class="panel-hint">Cliquez sur une photo pour la remplacer. Le changement s'applique automatiquement.</p>
       <div class="photos-grid" id="photosGrid"></div>
+
+      <div class="panel-header" style="margin-top:2.25rem"><h2>💍 Photos des bijoux (collection)</h2></div>
+      <p class="panel-hint">Remplacez la photo d'un bijou d'un clic. Pour <strong>ajouter / supprimer</strong> un bijou ou changer son nom et sa description, allez dans <a href="creations.html"><strong>Galerie</strong> →</a>.</p>
+      <div class="photos-grid" id="creationsPhotosGrid"></div>
     </div>
   </div>
 
@@ -111,7 +115,9 @@
   (function () {
     'use strict';
     var FILE = 'data/contenu.json';
+    var CRE_FILE = 'data/creations.json';
     var data = {}, sha = '', editAv = -1, pendingAvisPhoto = null;
+    var creData = { creations: [] }, creSha = '';
 
     var TEXT_GROUPS = [
       { title: '🏠 Accueil (hero)', keys: ['hero_tag', 'hero_title', 'hero_sub'] },
@@ -161,6 +167,12 @@
         data.textes = data.textes || {}; data.avis = data.avis || []; data.photos = data.photos || {};
         CMS.status('', ''); renderAvis(); renderTextes(); renderPhotos();
       }).catch(function (e) { CMS.status('error', 'Erreur de chargement'); console.error(e); });
+      CMS.load(CRE_FILE).then(function (r) {
+        creData = r.data || { creations: [] };
+        if (!Array.isArray(creData.creations)) creData.creations = [];
+        creSha = r.sha;
+        renderCreationsPhotos();
+      }).catch(function (e) { console.error(e); });
     }
 
     function persist(msg) {
@@ -303,6 +315,36 @@
         data.photos[key] = path;
         return persist('Photo : ' + key);
       }).then(renderPhotos).catch(function (e) { CMS.status('error', 'Erreur'); console.error(e); });
+    };
+
+    // Photos des bijoux (collection) — écrit dans data/creations.json
+    function renderCreationsPhotos() {
+      var grid = document.getElementById('creationsPhotosGrid'); if (!grid) return; grid.innerHTML = '';
+      if (!creData.creations.length) { grid.innerHTML = '<div class="placeholder">Aucun bijou pour le moment.</div>'; return; }
+      creData.creations.forEach(function (c, i) {
+        var src = c.image || '';
+        var slot = document.createElement('div'); slot.className = 'photo-slot';
+        slot.innerHTML = '<span class="photo-slot__label">' + CMS.eh(c.nom || ('Bijou ' + (i + 1))) + '</span>' +
+          '<div class="photo-slot__wrap">' +
+            '<input type="file" accept="image/*" onchange="replaceCreationPhoto(this,' + i + ')">' +
+            (src ? '<img src="' + CMS.esc(CMS.imgSrc(src)) + '" alt="">'
+                 : '<div class="photo-slot__empty">📷<span>Cliquer pour ajouter</span></div>') +
+          '</div><p class="photo-slot__hint">Cliquer pour remplacer</p>';
+        grid.appendChild(slot);
+      });
+    }
+    window.replaceCreationPhoto = function (input, i) {
+      if (!input.files || !input.files[0]) return;
+      CMS.status('saving', 'Téléversement…');
+      CMS.uploadImage(input.files[0]).then(function (path) {
+        creData.creations[i].image = path;
+        CMS.status('saving', 'Enregistrement…');
+        return CMS.save(CRE_FILE, creData, creSha, 'Photo bijou : ' + (creData.creations[i].nom || ('#' + i)));
+      }).then(function (newSha) {
+        creSha = newSha; CMS.status('saved', 'Enregistré ✓');
+        setTimeout(function () { CMS.status('', ''); }, 3000);
+        renderCreationsPhotos();
+      }).catch(function (e) { CMS.status('error', 'Erreur'); console.error(e); });
     };
 
     /* ---------- overlay handlers ---------- */
