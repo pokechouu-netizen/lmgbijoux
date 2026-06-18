@@ -47,6 +47,7 @@
     "acces_title":     { "fr": "Venez à <em>l'atelier</em>", "en": "Visit the <em>workshop</em>" }
   },
   "photos": {
+    "logo": "assets/logo1.png",
     "hero": "assets/photo8.jpg",
     "artisan": "assets/photo5.jpg",
     "boutique": "assets/photo40.jpg"

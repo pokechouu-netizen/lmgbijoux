@@ -359,7 +359,7 @@
   }
 
   // --- Photos clés ---
-  const PHOTO_TARGETS = { hero: '#hero .hero__img', artisan: '#artisan .artisan__photo', boutique: '#boutique .boutique__img' };
+  const PHOTO_TARGETS = { logo: '#nav .nav__logo-img', hero: '#hero .hero__img', artisan: '#artisan .artisan__photo', boutique: '#boutique .boutique__img' };
   function applyPhotos(photos) {
     if (!photos) return;
     Object.keys(PHOTO_TARGETS).forEach(key => {
