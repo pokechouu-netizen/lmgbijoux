@@ -48,7 +48,7 @@
       <div class="panel-header">
         <h2>Textes du site (FR / EN)</h2>
       </div>
-      <p class="panel-hint">Modifiez tous les textes des sections. Astuce : dans les titres, <code>&lt;br&gt;</code> = retour à la ligne et <code>&lt;em&gt;mot&lt;/em&gt;</code> = mot mis en doré. Cliquez « Enregistrer les textes » en bas.</p>
+      <p class="panel-hint">Modifiez tous les textes des sections. Pour les titres : appuyez sur <strong>Entrée</strong> pour un retour à la ligne — le <strong>dernier mot</strong> apparaît automatiquement en doré sur le site. Cliquez « Enregistrer les textes » en bas.</p>
       <div id="textesContainer"></div>
       <div class="form-save-row">
         <button class="btn btn-primary" onclick="saveTextes()">Enregistrer les textes</button>
@@ -142,7 +142,7 @@
       infos_tag: 'Infos — intitulé', infos_title: 'Infos — titre', horaires_note: 'Note sous les horaires',
       acces_tag: 'Accès — intitulé', acces_title: 'Accès — titre'
     };
-    function isLong(key) { return /(_desc|_text|_sub|_intro|_detail)$/.test(key); }
+    function isLong(key) { return /(_desc|_text|_sub|_intro|_detail|_title)$/.test(key); }
 
     var PHOTOS = {
       logo: 'Logo (en-tête du site)',

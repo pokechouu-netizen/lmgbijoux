@@ -6,8 +6,8 @@
       "en": "Artisan Jewellery — Bollène"
     },
     "hero_title": {
-      "fr": "L'or dort<br>dans la <em>pierre.</em>",
-      "en": "Gold sleeps<br>within the <em>stone.</em>"
+      "fr": "L'or dort\ndans la pierre.",
+      "en": "Gold sleeps\nwithin the stone."
     },
     "hero_sub": {
       "fr": "Depuis son atelier au cœur de Bollène, Laurent Mignot réveille l'éclat des bijoux — anciens ou à naître.",
@@ -18,8 +18,8 @@
       "en": "The craftsman"
     },
     "artisan_title": {
-      "fr": "Laurent Mignot,<br><em>bijoutier</em>",
-      "en": "Laurent Mignot,<br><em>jeweller</em>"
+      "fr": "Laurent Mignot,\nbijoutier",
+      "en": "Laurent Mignot,\njeweller"
     },
     "artisan_desc": {
       "fr": "Chaque bijou a une histoire. Laurent Mignot le sait mieux que quiconque : entre ses mains, une bague ancienne retrouve sa lumière, un pendentif prend forme à partir d'une idée murmurée. Dans son atelier de Bollène, il travaille le métal avec patience et précision — que ce soit pour redonner vie à un héritage familial ou créer une pièce unique.",
@@ -34,8 +34,8 @@
       "en": "Our vision"
     },
     "vision_title": {
-      "fr": "Plus de 40 ans<br>de <em>passion</em>",
-      "en": "More than 40 years<br>of <em>passion</em>"
+      "fr": "Plus de 40 ans\nde passion",
+      "en": "More than 40 years\nof passion"
     },
     "vision_text": {
       "fr": "Laurent est passionné de bijouterie depuis l'enfance et exerce ce métier depuis plus de 40 ans. Son travail repose sur la transmission d'un savoir-faire artisanal, le respect des matériaux nobles et la volonté de redonner vie aux bijoux chargés d'histoire.",
@@ -46,8 +46,8 @@
       "en": "The shop"
     },
     "boutique_title": {
-      "fr": "Un écrin<br>à <em>Bollène</em>",
-      "en": "A jewel box<br>in <em>Bollène</em>"
+      "fr": "Un écrin\nà Bollène",
+      "en": "A jewel box\nin Bollène"
     },
     "boutique_desc": {
       "fr": "Poussez la porte du 29 Boulevard Victor Hugo et découvrez un univers où chaque vitrine raconte une histoire. Bijoux anciens, créations sur mesure et pièces uniques vous attendent dans un cadre chaleureux.",
@@ -58,8 +58,8 @@
       "en": "Our services"
     },
     "services_title": {
-      "fr": "Savoir-faire<br>& <em>expertise</em>",
-      "en": "Craftsmanship<br>& <em>expertise</em>"
+      "fr": "Savoir-faire\n& expertise",
+      "en": "Craftsmanship\n& expertise"
     },
     "service1_title": {
       "fr": "Réparation",
@@ -98,24 +98,24 @@
       "en": "Collection"
     },
     "creations_title": {
-      "fr": "Bijoux anciens<br>& <em>créations</em>",
-      "en": "Antique jewellery<br>& <em>creations</em>"
+      "fr": "Bijoux anciens\n& créations",
+      "en": "Antique jewellery\n& creations"
     },
     "avis_tag": {
       "fr": "Témoignages",
       "en": "Testimonials"
     },
     "avis_title": {
-      "fr": "Ils en <em>parlent</em>",
-      "en": "What they <em>say</em>"
+      "fr": "Ils en parlent",
+      "en": "What they say"
     },
     "instagram_tag": {
       "fr": "Actualités",
       "en": "News"
     },
     "instagram_title": {
-      "fr": "Inspirations<br>& <em>nouveautés</em>",
-      "en": "Inspirations<br>& <em>latest news</em>"
+      "fr": "Inspirations\n& nouveautés",
+      "en": "Inspirations\n& latest news"
     },
     "instagram_intro": {
       "fr": "Suivez nos dernières créations et actualités sur Instagram.",
@@ -126,8 +126,8 @@
       "en": "Practical"
     },
     "infos_title": {
-      "fr": "Infos & <em>horaires</em>",
-      "en": "Info & <em>hours</em>"
+      "fr": "Infos & horaires",
+      "en": "Info & hours"
     },
     "horaires_note": {
       "fr": "Horaires susceptibles de changer, appelez avant.",
@@ -138,8 +138,8 @@
       "en": "Find us"
     },
     "acces_title": {
-      "fr": "Venez à <em>l'atelier</em>",
-      "en": "Visit the <em>workshop</em>"
+      "fr": "Venez à l'atelier",
+      "en": "Visit the workshop"
     }
   },
   "photos": {

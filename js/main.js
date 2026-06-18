@@ -348,13 +348,23 @@
     infos_tag: '#infos .section-tag', infos_title: '#infos .section-title', horaires_note: '#infos .horaires__note span',
     acces_tag: '#acces .section-tag', acces_title: '#acces .section-title'
   };
+  // Titres à accent doré : le dernier mot est automatiquement mis en <em> (doré).
+  const TITLE_KEYS = ['hero_title', 'artisan_title', 'vision_title', 'boutique_title', 'services_title', 'creations_title', 'avis_title', 'instagram_title', 'infos_title', 'acces_title'];
+  // Texte saisi (propre) → HTML d'affichage : échappe, dernier mot doré (titres), retours à la ligne → <br>.
+  function htmlFromText(text, isTitle) {
+    let s = String(text == null ? '' : text)
+      .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    if (isTitle) s = s.replace(/(\S+)(\s*)$/, '<em>$1</em>$2');
+    return s.replace(/\r?\n/g, '<br>');
+  }
   function applyTextes(textes) {
     if (!textes) return;
     Object.keys(TEXT_TARGETS).forEach(key => {
       const t = textes[key]; if (!t) return;
       const el = document.querySelector(TEXT_TARGETS[key]); if (!el) return;
-      if (t.fr != null) el.setAttribute('data-fr', t.fr);
-      if (t.en != null) el.setAttribute('data-en', t.en);
+      const isTitle = TITLE_KEYS.indexOf(key) !== -1;
+      if (t.fr != null) el.setAttribute('data-fr', htmlFromText(t.fr, isTitle));
+      if (t.en != null) el.setAttribute('data-en', htmlFromText(t.en, isTitle));
     });
   }
 
