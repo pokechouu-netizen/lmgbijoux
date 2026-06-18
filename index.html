@@ -708,6 +708,17 @@
     <p class="easter-popup__text">Ici, la pierre devient éclat.</p>
   </div>
 
+  <!-- Netlify Identity — capte le lien d'invitation / réinitialisation puis redirige vers /admin -->
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <script>
+    if (window.netlifyIdentity) {
+      netlifyIdentity.on('init', function (user) {
+        if (!user) {
+          netlifyIdentity.on('login', function () { document.location.href = '/admin/'; });
+        }
+      });
+    }
+  </script>
   <script src="js/main.js"></script>
 </body>
 </html>
