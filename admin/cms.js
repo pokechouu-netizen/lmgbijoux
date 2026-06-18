@@ -5,7 +5,9 @@
 (function (global) {
   'use strict';
 
-  var GIT = '/.netlify/functions/git-proxy/';
+  // Netlify Git Gateway : écrit dans GitHub via la connexion Netlify (aucun token manuel requis).
+  var GIT = '/.netlify/git/github/contents/';
+  var BRANCH = 'main';
   var hookUrl = null;
 
   function jwt() {
@@ -24,13 +26,14 @@
   /* ---- low-level proxy calls ---- */
   function gitGetRaw(path) {
     return jwt().then(function (t) {
-      return fetch(GIT + path, { headers: { Authorization: 'Bearer ' + t } }).then(function (r) {
+      return fetch(GIT + path + '?ref=' + BRANCH, { headers: { Authorization: 'Bearer ' + t } }).then(function (r) {
         if (!r.ok) throw new Error('GET ' + path + ' → ' + r.status);
         return r.json();
       });
     });
   }
   function gitPutRaw(path, body) {
+    if (body && !body.branch) body.branch = BRANCH;
     return jwt().then(function (t) {
       return fetch(GIT + path, {
         method: 'PUT',
