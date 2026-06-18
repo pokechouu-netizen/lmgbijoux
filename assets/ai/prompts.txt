@@ -1,0 +1,23 @@
+PROMPTS POUR GÉNÉRATION D'IMAGES IA (Pollinations / Flux)
+==========================================================
+
+1. hero.jpg (1920x1080)
+   Prompt: "luxury gold jewelry ring on dark velvet fabric dramatic lighting macro photography warm golden highlights professional product shot black background elegant premium"
+   URL: https://image.pollinations.ai/prompt/luxury%20gold%20jewelry%20ring%20on%20dark%20velvet%20fabric%20dramatic%20lighting%20macro%20photography%20warm%20golden%20highlights%20professional%20product%20shot%20black%20background%20elegant%20premium?width=1920&height=1080&seed=42&nologo=true
+
+2. atelier.jpg (1920x1080)
+   Prompt: "cozy artisan jewelry workshop wooden workbench tools warm ambient lighting small french boutique intimate atmosphere gold pieces scattered professional photography"
+   URL: https://image.pollinations.ai/prompt/cozy%20artisan%20jewelry%20workshop%20wooden%20workbench%20tools%20warm%20ambient%20lighting%20small%20french%20boutique%20intimate%20atmosphere%20gold%20pieces%20scattered%20professional%20photography?width=1920&height=1080&seed=77&nologo=true
+
+3. texture.jpg (1920x1080)
+   Prompt: "dark stone texture subtle gold veins marble surface elegant minimalist background seamless pattern luxury natural material"
+   URL: https://image.pollinations.ai/prompt/dark%20stone%20texture%20subtle%20gold%20veins%20marble%20surface%20elegant%20minimalist%20background%20seamless%20pattern%20luxury%20natural%20material?width=1920&height=1080&seed=33&nologo=true
+
+4. polish-blurry.jpg (800x800)
+   Prompt: "vintage gold necklace pendant on dark background soft warm light macro close up jewelry photography elegant timeless piece"
+   URL: https://image.pollinations.ai/prompt/vintage%20gold%20necklace%20pendant%20on%20dark%20background%20soft%20warm%20light%20macro%20close%20up%20jewelry%20photography%20elegant%20timeless%20piece?width=800&height=800&seed=55&nologo=true
+
+INSTRUCTIONS:
+- Ouvrir chaque URL dans un navigateur et sauvegarder l'image résultante
+- Ou utiliser curl -L -o <filename> <URL> (si Pollinations est accessible)
+- Les images sont placées dans assets/ai/

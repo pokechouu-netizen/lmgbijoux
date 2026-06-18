@@ -1,0 +1,80 @@
+{
+  "_commentaire": "Textes (FR/EN), photos clés et avis clients. Modifiable depuis l'admin (/admin → Textes & photos / Avis). Astuce : dans les titres, <br> = retour à la ligne et <em>mot</em> = mot en doré.",
+  "textes": {
+    "hero_tag":        { "fr": "Bijouterie artisanale — Bollène", "en": "Artisan Jewellery — Bollène" },
+    "hero_title":      { "fr": "L'or dort<br>dans la <em>pierre.</em>", "en": "Gold sleeps<br>within the <em>stone.</em>" },
+    "hero_sub":        { "fr": "Depuis son atelier au cœur de Bollène, Laurent Mignot réveille l'éclat des bijoux — anciens ou à naître.", "en": "From his workshop in the heart of Bollène, Laurent Mignot revives the brilliance of jewellery — antique or yet to be born." },
+
+    "artisan_tag":     { "fr": "L'artisan", "en": "The craftsman" },
+    "artisan_title":   { "fr": "Laurent Mignot,<br><em>bijoutier</em>", "en": "Laurent Mignot,<br><em>jeweller</em>" },
+    "artisan_desc":    { "fr": "Chaque bijou a une histoire. Laurent Mignot le sait mieux que quiconque : entre ses mains, une bague ancienne retrouve sa lumière, un pendentif prend forme à partir d'une idée murmurée. Dans son atelier de Bollène, il travaille le métal avec patience et précision — que ce soit pour redonner vie à un héritage familial ou créer une pièce unique.", "en": "Every piece of jewellery tells a story. Laurent Mignot knows this better than anyone: in his hands, an antique ring finds its light again, a pendant takes shape from a whispered idea. In his Bollène workshop, he works metal with patience and precision — whether reviving a family heirloom or creating a unique piece." },
+    "artisan_detail":  { "fr": "« Le bijou, c'est l'émotion qu'on porte sur soi. »", "en": "“A jewel is the emotion you wear.”" },
+
+    "vision_tag":      { "fr": "Notre vision", "en": "Our vision" },
+    "vision_title":    { "fr": "Plus de 40 ans<br>de <em>passion</em>", "en": "More than 40 years<br>of <em>passion</em>" },
+    "vision_text":     { "fr": "Laurent est passionné de bijouterie depuis l'enfance et exerce ce métier depuis plus de 40 ans. Son travail repose sur la transmission d'un savoir-faire artisanal, le respect des matériaux nobles et la volonté de redonner vie aux bijoux chargés d'histoire.", "en": "Laurent has been passionate about jewellery since childhood and has practised this craft for over 40 years. His work is built on the transmission of artisanal expertise, respect for noble materials, and the desire to breathe new life into jewellery steeped in history." },
+
+    "boutique_tag":    { "fr": "La boutique", "en": "The shop" },
+    "boutique_title":  { "fr": "Un écrin<br>à <em>Bollène</em>", "en": "A jewel box<br>in <em>Bollène</em>" },
+    "boutique_desc":   { "fr": "Poussez la porte du 29 Boulevard Victor Hugo et découvrez un univers où chaque vitrine raconte une histoire. Bijoux anciens, créations sur mesure et pièces uniques vous attendent dans un cadre chaleureux.", "en": "Push open the door at 29 Boulevard Victor Hugo and discover a world where every display case tells a story. Antique jewellery, bespoke creations and unique pieces await you in a warm setting." },
+
+    "services_tag":    { "fr": "Nos services", "en": "Our services" },
+    "services_title":  { "fr": "Savoir-faire<br>& <em>expertise</em>", "en": "Craftsmanship<br>& <em>expertise</em>" },
+    "service1_title":  { "fr": "Réparation", "en": "Repair" },
+    "service1_desc":   { "fr": "Fermoir cassé, pierre dessertie, anneau usé… Chaque bijou mérite une seconde vie. Réparation minutieuse de tous types de bijoux.", "en": "Broken clasp, loose stone, worn band… Every jewel deserves a second life. Meticulous repair of all types of jewellery." },
+    "service2_title":  { "fr": "Restauration de bijoux anciens", "en": "Antique jewellery restoration" },
+    "service2_desc":   { "fr": "Redonner leur splendeur d'origine aux bijoux chargés d'histoire. Restauration respectueuse des pièces anciennes et héritages familiaux.", "en": "Restoring original splendour to jewellery steeped in history. Respectful restoration of antique pieces and family heirlooms." },
+    "service3_title":  { "fr": "Dépôt-vente", "en": "Consignment" },
+    "service3_desc":   { "fr": "Confiez vos bijoux à la boutique pour leur trouver un nouveau propriétaire. Un service de confiance pour vendre ou acquérir des pièces de qualité.", "en": "Entrust your jewellery to the shop to find a new owner. A trusted service to sell or acquire quality pieces." },
+    "service4_title":  { "fr": "Conseil & Expertise", "en": "Advice & Appraisal" },
+    "service4_desc":   { "fr": "Évaluation et expertise de vos bijoux par un professionnel passionné. Conseils personnalisés pour l'achat, la vente ou l'entretien de vos pièces.", "en": "Evaluation and appraisal of your jewellery by a passionate professional. Personalised advice for buying, selling or maintaining your pieces." },
+
+    "creations_tag":   { "fr": "Collection", "en": "Collection" },
+    "creations_title": { "fr": "Bijoux anciens<br>& <em>créations</em>", "en": "Antique jewellery<br>& <em>creations</em>" },
+
+    "avis_tag":        { "fr": "Témoignages", "en": "Testimonials" },
+    "avis_title":      { "fr": "Ils en <em>parlent</em>", "en": "What they <em>say</em>" },
+
+    "instagram_tag":   { "fr": "Actualités", "en": "News" },
+    "instagram_title": { "fr": "Inspirations<br>& <em>nouveautés</em>", "en": "Inspirations<br>& <em>latest news</em>" },
+    "instagram_intro": { "fr": "Suivez nos dernières créations et actualités sur Instagram.", "en": "Follow our latest creations and news on Instagram." },
+
+    "infos_tag":       { "fr": "Pratique", "en": "Practical" },
+    "infos_title":     { "fr": "Infos & <em>horaires</em>", "en": "Info & <em>hours</em>" },
+    "horaires_note":   { "fr": "Horaires susceptibles de changer, appelez avant.", "en": "Hours may vary, please call ahead." },
+
+    "acces_tag":       { "fr": "Nous trouver", "en": "Find us" },
+    "acces_title":     { "fr": "Venez à <em>l'atelier</em>", "en": "Visit the <em>workshop</em>" }
+  },
+  "photos": {
+    "hero": "assets/photo8.jpg",
+    "artisan": "assets/photo5.jpg",
+    "boutique": "assets/photo40.jpg"
+  },
+  "avis": [
+    {
+      "id": "av1",
+      "texte_fr": "Service exceptionnel ! Ce bijoutier a ajusté ma montre à ma taille avec une précision parfaite. Seul dans son atelier, il a été rapide, professionnel et très accueillant. Je le recommande vivement !",
+      "texte_en": "Exceptional service! This jeweller adjusted my watch to size with perfect precision. Working alone in his workshop, he was fast, professional and very welcoming. Highly recommend!",
+      "auteur": "Matteo S.",
+      "note": 5,
+      "photo": ""
+    },
+    {
+      "id": "av2",
+      "texte_fr": "Création de bijoux plus qu'à la hauteur de mes attentes ! Bijoutier à l'écoute, très sympathique avec beaucoup d'humour. Un bonheur de passer le voir.",
+      "texte_en": "Jewellery creation far beyond my expectations! A jeweller who listens, very friendly with great humour. A joy to visit.",
+      "auteur": "Laura D.",
+      "note": 5,
+      "photo": ""
+    },
+    {
+      "id": "av3",
+      "texte_fr": "Une adresse à retenir, un commerçant à votre écoute et des bijoux que l'on ne voit pas partout et pour tous les budgets. Mention spéciale pour les montres vintages.",
+      "texte_en": "An address to remember, a shopkeeper who truly listens, and jewellery you won't find everywhere, for all budgets. Special mention for the vintage watches.",
+      "auteur": "Jean-Yves S.",
+      "note": 5,
+      "photo": ""
+    }
+  ]
+}

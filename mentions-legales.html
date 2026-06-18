@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mentions légales — LMG Bijoux</title>
+  <meta name="description" content="Mentions légales du site LMG Bijoux, bijouterie artisanale à Bollène.">
+  <meta name="theme-color" content="#0A0A0A">
+  <link rel="icon" href="favicon.ico" sizes="48x48">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <nav class="nav scrolled" role="navigation" aria-label="Navigation principale">
+    <a href="index.html" class="nav__logo">
+      <svg class="nav__logo-svg" viewBox="0 0 180 40" xmlns="http://www.w3.org/2000/svg">
+        <text x="0" y="30" font-family="'Cormorant Garamond', serif" font-size="28" font-weight="600" fill="#C9A84C" letter-spacing="3">LMG</text>
+        <text x="82" y="30" font-family="'Cormorant Garamond', serif" font-size="28" font-weight="300" fill="#F5F0E8" letter-spacing="2" font-style="italic">Bijoux</text>
+      </svg>
+    </a>
+    <div class="nav__links">
+      <a href="index.html" class="nav__link">Accueil</a>
+      <a href="index.html#services" class="nav__link">Services</a>
+      <a href="index.html#creations" class="nav__link">Galerie</a>
+      <a href="index.html#avis" class="nav__link">Avis</a>
+      <a href="index.html#contact" class="nav__link">Contact</a>
+    </div>
+    <button class="nav__burger" id="navBurgerLegal" aria-label="Ouvrir le menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <div class="nav__mobile" id="navMobileLegal">
+    <a href="index.html">Accueil</a>
+    <a href="index.html#services">Services</a>
+    <a href="index.html#creations">Galerie</a>
+    <a href="index.html#avis">Avis</a>
+    <a href="index.html#contact">Contact</a>
+  </div>
+
+  <main class="legal">
+    <div id="legalBody">
+    <h1>Mentions légales</h1>
+
+    <h2>Éditeur du site</h2>
+    <p>
+      <strong>LMG Bijoux</strong><br>
+      Laurent Mignot — Entrepreneur individuel (EI)<br>
+      Nom commercial : LMG
+    </p>
+    <p>
+      <strong>Adresse :</strong> 29 Boulevard Victor Hugo, 84500 Bollène, France<br>
+      <strong>Téléphone :</strong> 07 81 08 14 67<br>
+      <strong>Email :</strong> TODO<br>
+      <strong>SIREN :</strong> 904 129 723<br>
+      <strong>Numéro de TVA intracommunautaire :</strong> FR06904129723
+    </p>
+
+    <h2>Hébergement</h2>
+    <p>
+      TODO — (Renseigner le nom, l'adresse et les coordonnées de l'hébergeur du site une fois celui-ci mis en ligne.)
+    </p>
+
+    <h2>Propriété intellectuelle</h2>
+    <p>
+      L'ensemble du contenu de ce site (textes, images, graphismes, logo, icônes, mise en page) est la propriété exclusive de LMG Bijoux ou de ses partenaires, sauf mention contraire. Toute reproduction, représentation, modification ou adaptation, totale ou partielle, est interdite sans l'accord écrit préalable de LMG Bijoux.
+    </p>
+
+    <h2>Crédits images</h2>
+    <ul>
+      <li><strong>Illustrations SVG</strong> : réalisées sur mesure (inline SVG), intégrées directement dans le code du site</li>
+      <li><strong>Icônes SVG</strong> : réalisées sur mesure ou provenant de sources open source (Feather Icons)</li>
+    </ul>
+
+    <h2>Responsabilité</h2>
+    <p>
+      LMG Bijoux s'efforce de fournir des informations exactes et à jour sur ce site. Toutefois, des erreurs ou omissions peuvent survenir. LMG Bijoux décline toute responsabilité en cas d'inexactitude des informations diffusées sur ce site.
+    </p>
+
+    <h2>Liens externes</h2>
+    <p>
+      Ce site peut contenir des liens vers des sites tiers (Instagram, Facebook, Google Maps). LMG Bijoux n'exerce aucun contrôle sur ces sites et décline toute responsabilité quant à leur contenu.
+    </p>
+
+    <h2>Droit applicable</h2>
+    <p>
+      Les présentes mentions légales sont soumises au droit français. En cas de litige, les tribunaux français seront seuls compétents.
+    </p>
+
+    </div>
+    <p style="margin-top: 3rem;">
+      <a href="index.html">&larr; Retour à l'accueil</a>
+    </p>
+  </main>
+
+  <script>
+    const burger = document.getElementById('navBurgerLegal');
+    const mobile = document.getElementById('navMobileLegal');
+    if (burger && mobile) {
+      burger.addEventListener('click', () => {
+        burger.classList.toggle('open');
+        mobile.classList.toggle('open');
+      });
+      mobile.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+        burger.classList.remove('open');
+        mobile.classList.remove('open');
+      }));
+    }
+  </script>
+  <script>
+    // Charge le contenu éditable depuis le CMS (data/mentions.json)
+    fetch('data/mentions.json', { cache: 'no-store' })
+      .then(r => r.ok ? r.json() : null)
+      .then(d => { if (d && d.mentions_legales && d.mentions_legales.html) document.getElementById('legalBody').innerHTML = d.mentions_legales.html; })
+      .catch(() => {});
+  </script>
+</body>
+</html>

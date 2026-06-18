@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contenu du site — LMG Bijoux</title>
+  <link rel="stylesheet" href="admin.css">
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+</head>
+<body>
+
+  <div id="loginScreen">
+    <div class="brand">LMG Bijoux</div>
+    <h1>Contenu du site</h1>
+    <p>Connectez-vous pour modifier les avis, les textes et les photos.</p>
+    <button class="btn-login" onclick="CMS.login()">Se connecter</button>
+  </div>
+
+  <div id="adminScreen">
+    <div class="topbar">
+      <h1>✏️ Contenu du site</h1>
+      <span class="status" id="statusEl"></span>
+      <a href="index.html" class="btn btn-ghost btn-sm">← Admin</a>
+      <a href="../index.html" target="_blank" class="btn btn-ghost btn-sm">Voir le site ↗</a>
+      <button class="btn-text" onclick="CMS.logout()">Déconnexion</button>
+    </div>
+
+    <div class="tabs-wrap">
+      <div class="tabs">
+        <button class="tab active" data-tab="avis" onclick="switchTab('avis',this)">⭐ Avis clients</button>
+        <button class="tab" data-tab="textes" onclick="switchTab('textes',this)">✏️ Textes du site</button>
+        <button class="tab" data-tab="photos" onclick="switchTab('photos',this)">📷 Photos</button>
+      </div>
+    </div>
+
+    <!-- AVIS -->
+    <div class="panel active" id="panel-avis">
+      <div class="panel-header">
+        <h2>Avis clients</h2>
+        <button class="btn btn-primary btn-sm" onclick="openAvis(-1)">+ Ajouter un avis</button>
+      </div>
+      <p class="panel-hint">Ces avis s'affichent dans la section « Ils en parlent » de la page d'accueil.</p>
+      <div class="card-list" id="avisList"><div class="loading">Chargement…</div></div>
+    </div>
+
+    <!-- TEXTES -->
+    <div class="panel" id="panel-textes">
+      <div class="panel-header">
+        <h2>Textes du site (FR / EN)</h2>
+      </div>
+      <p class="panel-hint">Modifiez tous les textes des sections. Astuce : dans les titres, <code>&lt;br&gt;</code> = retour à la ligne et <code>&lt;em&gt;mot&lt;/em&gt;</code> = mot mis en doré. Cliquez « Enregistrer les textes » en bas.</p>
+      <div id="textesContainer"></div>
+      <div class="form-save-row">
+        <button class="btn btn-primary" onclick="saveTextes()">Enregistrer les textes</button>
+      </div>
+    </div>
+
+    <!-- PHOTOS -->
+    <div class="panel" id="panel-photos">
+      <div class="panel-header"><h2>Photos clés du site</h2></div>
+      <p class="panel-hint">Cliquez sur une photo pour la remplacer. Le changement s'applique après l'enregistrement automatique.</p>
+      <div class="photos-grid" id="photosGrid"></div>
+    </div>
+  </div>
+
+  <!-- Modal avis -->
+  <div class="overlay" id="overlayAvis">
+    <div class="modal" role="dialog">
+      <button class="modal-close" onclick="closeAvis()">&times;</button>
+      <h2 id="avisTitle">Nouvel avis</h2>
+      <div class="lang-row">
+        <div class="fg">
+          <label><span class="lang-tag">FR</span> Texte de l'avis *</label>
+          <textarea id="a_texte_fr" rows="5" placeholder="Le texte de l'avis en français"></textarea>
+        </div>
+        <div class="fg">
+          <label><span class="lang-tag">EN</span> Texte de l'avis (anglais)</label>
+          <textarea id="a_texte_en" rows="5" placeholder="Review text in English"></textarea>
+        </div>
+      </div>
+      <div class="frow">
+        <div class="fg"><label>Auteur *</label><input type="text" id="a_auteur" placeholder="Ex : Matteo S."></div>
+        <div class="fg"><label>Note</label>
+          <select id="a_note">
+            <option value="5">★★★★★ (5)</option>
+            <option value="4">★★★★ (4)</option>
+            <option value="3">★★★ (3)</option>
+            <option value="2">★★ (2)</option>
+            <option value="1">★ (1)</option>
+          </select>
+        </div>
+      </div>
+      <div class="fg">
+        <label>Photo du client (optionnel)</label>
+        <div class="photo-slot__wrap" style="max-width:160px;aspect-ratio:1/1" id="avisPhotoWrap">
+          <input type="file" accept="image/*" id="a_photo_input" onchange="onAvisPhoto(this)">
+          <div class="photo-slot__empty" id="avisPhotoEmpty">📷<span>Ajouter</span></div>
+          <img id="avisPhotoImg" style="display:none" alt="">
+        </div>
+        <p class="photo-slot__hint" id="avisPhotoHint" style="text-align:left">Facultatif.</p>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-ghost" onclick="closeAvis()">Annuler</button>
+        <button class="btn btn-primary" id="avisSaveBtn" onclick="saveAvis()">Enregistrer</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="cms.js"></script>
+  <script>
+  (function () {
+    'use strict';
+    var FILE = 'data/contenu.json';
+    var data = {}, sha = '', editAv = -1, pendingAvisPhoto = null;
+
+    var TEXT_GROUPS = [
+      { title: '🏠 Accueil (hero)', keys: ['hero_tag', 'hero_title', 'hero_sub'] },
+      { title: '👤 L\'artisan', keys: ['artisan_tag', 'artisan_title', 'artisan_desc', 'artisan_detail'] },
+      { title: '🔭 Notre vision', keys: ['vision_tag', 'vision_title', 'vision_text'] },
+      { title: '🏬 La boutique', keys: ['boutique_tag', 'boutique_title', 'boutique_desc'] },
+      { title: '🛠️ Nos services', keys: ['services_tag', 'services_title', 'service1_title', 'service1_desc', 'service2_title', 'service2_desc', 'service3_title', 'service3_desc', 'service4_title', 'service4_desc'] },
+      { title: '🧭 En-têtes des sections', keys: ['creations_tag', 'creations_title', 'avis_tag', 'avis_title', 'instagram_tag', 'instagram_title', 'instagram_intro', 'infos_tag', 'infos_title', 'horaires_note', 'acces_tag', 'acces_title'] }
+    ];
+    var LABELS = {
+      hero_tag: 'Petit texte au-dessus du titre', hero_title: 'Grand titre', hero_sub: 'Sous-titre',
+      artisan_tag: 'Intitulé', artisan_title: 'Titre', artisan_desc: 'Paragraphe', artisan_detail: 'Citation',
+      vision_tag: 'Intitulé', vision_title: 'Titre', vision_text: 'Paragraphe',
+      boutique_tag: 'Intitulé', boutique_title: 'Titre', boutique_desc: 'Paragraphe',
+      services_tag: 'Intitulé', services_title: 'Titre',
+      service1_title: 'Service 1 — titre', service1_desc: 'Service 1 — description',
+      service2_title: 'Service 2 — titre', service2_desc: 'Service 2 — description',
+      service3_title: 'Service 3 — titre', service3_desc: 'Service 3 — description',
+      service4_title: 'Service 4 — titre', service4_desc: 'Service 4 — description',
+      creations_tag: 'Galerie — intitulé', creations_title: 'Galerie — titre',
+      avis_tag: 'Avis — intitulé', avis_title: 'Avis — titre',
+      instagram_tag: 'Instagram — intitulé', instagram_title: 'Instagram — titre', instagram_intro: 'Instagram — phrase d\'intro',
+      infos_tag: 'Infos — intitulé', infos_title: 'Infos — titre', horaires_note: 'Note sous les horaires',
+      acces_tag: 'Accès — intitulé', acces_title: 'Accès — titre'
+    };
+    function isLong(key) { return /(_desc|_text|_sub|_intro|_detail)$/.test(key); }
+
+    var PHOTOS = {
+      hero: 'Bandeau d\'accueil (hero)',
+      artisan: 'Photo de l\'artisan',
+      boutique: 'Photo de la boutique'
+    };
+
+    CMS.requireAuth(boot);
+
+    function boot() {
+      // open requested tab
+      var t = new URLSearchParams(location.search).get('tab');
+      if (t) { var btn = document.querySelector('.tab[data-tab="' + t + '"]'); if (btn) switchTab(t, btn); }
+      load();
+    }
+
+    function load() {
+      CMS.status('saving', 'Chargement…');
+      CMS.load(FILE).then(function (r) {
+        data = r.data; sha = r.sha;
+        data.textes = data.textes || {}; data.avis = data.avis || []; data.photos = data.photos || {};
+        CMS.status('', ''); renderAvis(); renderTextes(); renderPhotos();
+      }).catch(function (e) { CMS.status('error', 'Erreur de chargement'); console.error(e); });
+    }
+
+    function persist(msg) {
+      CMS.status('saving', 'Enregistrement…');
+      return CMS.save(FILE, data, sha, msg).then(function (newSha) {
+        sha = newSha; CMS.status('saved', 'Enregistré ✓');
+        setTimeout(function () { CMS.status('', ''); }, 3000);
+      }).catch(function (e) { CMS.status('error', 'Erreur'); console.error(e); throw e; });
+    }
+
+    window.switchTab = function (id, btn) {
+      document.querySelectorAll('.panel').forEach(function (p) { p.classList.remove('active'); });
+      document.querySelectorAll('.tab').forEach(function (t) { t.classList.remove('active'); });
+      document.getElementById('panel-' + id).classList.add('active');
+      btn.classList.add('active');
+    };
+
+    /* ---------- AVIS ---------- */
+    function renderAvis() {
+      var el = document.getElementById('avisList');
+      if (!data.avis.length) { el.innerHTML = '<div class="placeholder">Aucun avis. Cliquez « + Ajouter un avis ».</div>'; return; }
+      el.innerHTML = '';
+      data.avis.forEach(function (av, i) {
+        var stars = '★'.repeat(Math.max(1, Math.min(5, parseInt(av.note) || 5)));
+        var d = document.createElement('div'); d.className = 'item-card';
+        var img = av.photo ? '<img class="thumb" style="border-radius:50%" src="' + CMS.esc(CMS.imgSrc(av.photo)) + '" alt="">' : '';
+        d.innerHTML = img +
+          '<div class="item-card__body">' +
+            '<div class="item-card__text" style="font-style:italic">"' + CMS.eh(av.texte_fr) + '"</div>' +
+            '<div class="item-card__meta">— ' + CMS.eh(av.auteur) + ' · <span style="color:var(--gold-dark)">' + stars + '</span></div>' +
+          '</div>' +
+          '<div class="item-card__actions">' +
+            '<button class="btn btn-ghost btn-sm" onclick="openAvis(' + i + ')">✏️</button>' +
+            '<button class="btn btn-danger btn-sm" onclick="delAvis(' + i + ')">🗑</button>' +
+          '</div>';
+        el.appendChild(d);
+      });
+    }
+    window.openAvis = function (i) {
+      editAv = i; pendingAvisPhoto = null;
+      var av = i === -1 ? {} : data.avis[i];
+      document.getElementById('avisTitle').textContent = i === -1 ? 'Nouvel avis' : 'Modifier l\'avis';
+      document.getElementById('a_texte_fr').value = av.texte_fr || '';
+      document.getElementById('a_texte_en').value = av.texte_en || '';
+      document.getElementById('a_auteur').value = av.auteur || '';
+      document.getElementById('a_note').value = String(av.note || 5);
+      setAvisPhoto(av.photo || '');
+      document.getElementById('overlayAvis').classList.add('open');
+      document.getElementById('a_texte_fr').focus();
+    };
+    window.closeAvis = function () { document.getElementById('overlayAvis').classList.remove('open'); };
+    function setAvisPhoto(path) {
+      var img = document.getElementById('avisPhotoImg'), empty = document.getElementById('avisPhotoEmpty');
+      if (path) { img.src = CMS.imgSrc(path); img.style.display = 'block'; empty.style.display = 'none'; }
+      else { img.style.display = 'none'; empty.style.display = 'flex'; }
+    }
+    window.onAvisPhoto = function (input) {
+      if (!input.files || !input.files[0]) return;
+      var hint = document.getElementById('avisPhotoHint'); hint.textContent = 'Téléversement…';
+      CMS.uploadImage(input.files[0]).then(function (p) { pendingAvisPhoto = p; setAvisPhoto(p); hint.textContent = 'Photo prête ✓'; })
+        .catch(function (e) { hint.textContent = 'Erreur'; console.error(e); });
+    };
+    window.saveAvis = function () {
+      var tfr = document.getElementById('a_texte_fr').value.trim();
+      var aut = document.getElementById('a_auteur').value.trim();
+      if (!tfr || !aut) { alert('Le texte (FR) et l\'auteur sont obligatoires.'); return; }
+      var btn = document.getElementById('avisSaveBtn'); btn.disabled = true;
+      var av = editAv === -1 ? {} : data.avis[editAv];
+      av.texte_fr = tfr;
+      av.texte_en = document.getElementById('a_texte_en').value.trim();
+      av.auteur = aut;
+      av.note = parseInt(document.getElementById('a_note').value) || 5;
+      if (pendingAvisPhoto !== null) av.photo = pendingAvisPhoto;
+      if (av.photo === undefined) av.photo = '';
+      if (!av.id) av.id = 'av' + Date.now();
+      if (editAv === -1) data.avis.push(av);
+      persist((editAv === -1 ? 'Ajout avis : ' : 'Modif avis : ') + aut)
+        .then(function () { closeAvis(); renderAvis(); })
+        .finally(function () { btn.disabled = false; });
+    };
+    window.delAvis = function (i) {
+      if (!confirm('Supprimer cet avis ?')) return;
+      var a = data.avis[i].auteur; data.avis.splice(i, 1);
+      persist('Suppression avis : ' + a).then(renderAvis);
+    };
+
+    /* ---------- TEXTES ---------- */
+    function renderTextes() {
+      var c = document.getElementById('textesContainer'); c.innerHTML = '';
+      TEXT_GROUPS.forEach(function (g) {
+        var card = document.createElement('div'); card.className = 'section-card';
+        var html = '<p class="section-card__title">' + g.title + '</p>';
+        g.keys.forEach(function (k) {
+          var v = data.textes[k] || { fr: '', en: '' };
+          var field = isLong(k)
+            ? function (lang, val) { return '<textarea id="tx_' + k + '_' + lang + '" rows="3">' + CMS.eh(val) + '</textarea>'; }
+            : function (lang, val) { return '<input type="text" id="tx_' + k + '_' + lang + '" value="' + CMS.esc(val) + '">'; };
+          html += '<div style="margin-bottom:1rem">' +
+            '<label style="font-size:.74rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);display:block;margin-bottom:.35rem">' + CMS.eh(LABELS[k] || k) + '</label>' +
+            '<div class="lang-row">' +
+              '<div class="fg" style="margin:0"><label><span class="lang-tag">FR</span></label>' + field('fr', v.fr || '') + '</div>' +
+              '<div class="fg" style="margin:0"><label><span class="lang-tag">EN</span></label>' + field('en', v.en || '') + '</div>' +
+            '</div>' +
+          '</div>';
+        });
+        card.innerHTML = html; c.appendChild(card);
+      });
+    }
+    window.saveTextes = function () {
+      TEXT_GROUPS.forEach(function (g) {
+        g.keys.forEach(function (k) {
+          data.textes[k] = {
+            fr: document.getElementById('tx_' + k + '_fr').value,
+            en: document.getElementById('tx_' + k + '_en').value
+          };
+        });
+      });
+      persist('Mise à jour des textes du site');
+    };
+
+    /* ---------- PHOTOS ---------- */
+    function renderPhotos() {
+      var grid = document.getElementById('photosGrid'); grid.innerHTML = '';
+      Object.keys(PHOTOS).forEach(function (key) {
+        var src = data.photos[key] || '';
+        var slot = document.createElement('div'); slot.className = 'photo-slot';
+        slot.innerHTML = '<span class="photo-slot__label">' + CMS.eh(PHOTOS[key]) + '</span>' +
+          '<div class="photo-slot__wrap">' +
+            '<input type="file" accept="image/*" onchange="replacePhoto(this,\'' + key + '\')">' +
+            (src ? '<img id="simg-' + key + '" src="' + CMS.esc(CMS.imgSrc(src)) + '" alt="">'
+                 : '<div class="photo-slot__empty" id="simg-' + key + '">📷<span>Cliquer pour ajouter</span></div>') +
+          '</div><p class="photo-slot__hint">Cliquer pour remplacer</p>';
+        grid.appendChild(slot);
+      });
+    }
+    window.replacePhoto = function (input, key) {
+      if (!input.files || !input.files[0]) return;
+      CMS.status('saving', 'Téléversement…');
+      CMS.uploadImage(input.files[0]).then(function (path) {
+        data.photos[key] = path;
+        return persist('Photo : ' + key);
+      }).then(renderPhotos).catch(function (e) { CMS.status('error', 'Erreur'); console.error(e); });
+    };
+
+    /* ---------- overlay handlers ---------- */
+    document.getElementById('overlayAvis').addEventListener('click', function (e) { if (e.target === this) closeAvis(); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeAvis(); });
+  })();
+  </script>
+</body>
+</html>

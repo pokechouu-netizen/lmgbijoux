@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tutoriel — Gérer le site LMG Bijoux via Google Sheet</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Segoe UI', -apple-system, sans-serif; background: #f8f8f8; color: #333; line-height: 1.7; }
+    .container { max-width: 800px; margin: 0 auto; padding: 2rem; }
+    h1 { font-size: 2rem; color: #222; margin-bottom: 0.5rem; }
+    .subtitle { color: #888; font-size: 1rem; margin-bottom: 3rem; }
+    h2 { font-size: 1.4rem; color: #C9A84C; margin-top: 3rem; margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid #C9A84C; }
+    h3 { font-size: 1.1rem; color: #555; margin-top: 1.5rem; margin-bottom: 0.5rem; }
+    p { margin-bottom: 1rem; }
+    .step { background: #fff; border: 1px solid #e0e0e0; border-radius: 8px; padding: 1.5rem; margin-bottom: 1rem; position: relative; }
+    .step-number { display: inline-block; background: #C9A84C; color: #fff; width: 28px; height: 28px; border-radius: 50%; text-align: center; line-height: 28px; font-weight: 600; font-size: 0.85rem; margin-right: 0.5rem; }
+    .step strong { color: #222; }
+    code { background: #f0efe8; padding: 0.15rem 0.5rem; border-radius: 3px; font-size: 0.88rem; color: #C9A84C; }
+    .warning { background: #fff8e7; border-left: 4px solid #C9A84C; padding: 1rem 1.5rem; margin: 1rem 0; border-radius: 0 6px 6px 0; }
+    .warning strong { color: #a88a30; }
+    table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+    th { background: #C9A84C; color: #fff; padding: 0.7rem 1rem; text-align: left; font-weight: 500; font-size: 0.85rem; }
+    td { padding: 0.6rem 1rem; border-bottom: 1px solid #eee; font-size: 0.9rem; }
+    tr:hover td { background: #fafaf5; }
+    .footer { margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #ddd; color: #999; font-size: 0.85rem; text-align: center; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Tutoriel : Gérer le site LMG Bijoux</h1>
+    <p class="subtitle">Guide simple pour modifier les avis clients et la galerie bijoux via Google Sheet</p>
+
+    <!-- ========== SECTION 1 ========== -->
+    <h2>1. Configurer le Google Sheet</h2>
+
+    <div class="step">
+      <p><span class="step-number">1</span> <strong>Créer le Google Sheet</strong></p>
+      <p>Allez sur <code>sheets.google.com</code> et créez un nouveau fichier nommé <code>LMG_BIJOUX_SITE</code></p>
+    </div>
+
+    <div class="step">
+      <p><span class="step-number">2</span> <strong>Créer l'onglet AVIS_CLIENTS</strong></p>
+      <p>En bas du sheet, cliquez sur le <code>+</code> pour ajouter un onglet et nommez-le exactement : <code>AVIS_CLIENTS</code></p>
+      <p>Ajoutez ces colonnes en ligne 1 :</p>
+      <table>
+        <tr><th>A</th><th>B</th><th>C</th><th>D</th></tr>
+        <tr><td>nom_client</td><td>commentaire</td><td>note</td><td>photo_client</td></tr>
+      </table>
+    </div>
+
+    <div class="step">
+      <p><span class="step-number">3</span> <strong>Créer l'onglet BIJOUX</strong></p>
+      <p>Ajoutez un autre onglet nommé : <code>BIJOUX</code></p>
+      <p>Colonnes en ligne 1 :</p>
+      <table>
+        <tr><th>A</th><th>B</th><th>C</th><th>D</th><th>E</th><th>F</th></tr>
+        <tr><td>nom_bijou</td><td>type</td><td>pierre</td><td>matiere</td><td>description</td><td>photo_url</td></tr>
+      </table>
+    </div>
+
+    <div class="step">
+      <p><span class="step-number">4</span> <strong>Publier le Google Sheet</strong></p>
+      <p>Dans Google Sheets : <code>Fichier</code> &rarr; <code>Partager</code> &rarr; <code>Publier sur le Web</code></p>
+      <p>Sélectionnez <code>Document entier</code> et cliquez sur <code>Publier</code></p>
+    </div>
+
+    <div class="step">
+      <p><span class="step-number">5</span> <strong>Copier l'ID du Sheet</strong></p>
+      <p>Dans l'URL du sheet, copiez l'ID (la partie entre <code>/d/</code> et <code>/edit</code>)</p>
+      <p>Exemple : <code>https://docs.google.com/spreadsheets/d/<strong>1BxiMVs0XRA5nFMd...</strong>/edit</code></p>
+      <p>Collez cet ID dans le fichier <code>js/main.js</code>, ligne <code>GOOGLE_SHEET_ID</code></p>
+    </div>
+
+    <!-- ========== SECTION 2 ========== -->
+    <h2>2. Ajouter une photo dans Google Drive</h2>
+
+    <div class="step">
+      <p><span class="step-number">1</span> <strong>Ouvrez Google Drive</strong> (<code>drive.google.com</code>)</p>
+    </div>
+
+    <div class="step">
+      <p><span class="step-number">2</span> <strong>Créez un dossier</strong> nommé <code>LMG_BIJOUX_PHOTOS</code></p>
+    </div>
+
+    <div class="step">
+      <p><span class="step-number">3</span> <strong>Uploadez votre photo</strong> dans ce dossier (glisser-déposer)</p>
+    </div>
+
+    <div class="step">
+      <p><span class="step-number">4</span> <strong>Rendez la photo publique</strong></p>
+      <p>Clic droit sur la photo &rarr; <code>Partager</code> &rarr; <code>Accès général</code> &rarr; <code>Tous les utilisateurs disposant du lien</code></p>
+    </div>
+
+    <div class="step">
+      <p><span class="step-number">5</span> <strong>Copiez le lien de la photo</strong></p>
+      <p>Le lien ressemble à : <code>https://drive.google.com/file/d/XXXXXXX/view</code></p>
+      <p>Transformez-le en lien d'image direct :</p>
+      <p><code>https://drive.google.com/uc?export=view&id=XXXXXXX</code></p>
+      <p>(Remplacez XXXXXXX par l'ID du fichier)</p>
+    </div>
+
+    <!-- ========== SECTION 3 ========== -->
+    <h2>3. Ajouter un bijou à la galerie</h2>
+
+    <div class="step">
+      <p><span class="step-number">1</span> Ouvrez le Google Sheet <code>LMG_BIJOUX_SITE</code></p>
+    </div>
+
+    <div class="step">
+      <p><span class="step-number">2</span> Allez sur l'onglet <code>BIJOUX</code></p>
+    </div>
+
+    <div class="step">
+      <p><span class="step-number">3</span> Ajoutez une nouvelle ligne avec les informations :</p>
+      <table>
+        <tr><th>Colonne</th><th>Exemple</th></tr>
+        <tr><td>nom_bijou</td><td>Bague Saphir Royal</td></tr>
+        <tr><td>type</td><td>bague</td></tr>
+        <tr><td>pierre</td><td>saphir</td></tr>
+        <tr><td>matiere</td><td>or jaune 18k</td></tr>
+        <tr><td>description</td><td>Bague en or jaune sertie d'un saphir bleu naturel</td></tr>
+        <tr><td>photo_url</td><td>https://drive.google.com/uc?export=view&id=XXXXXXX</td></tr>
+      </table>
+    </div>
+
+    <div class="warning">
+      <strong>Important :</strong> Le site se met à jour automatiquement. Après avoir ajouté une ligne, attendez quelques secondes puis rafraîchissez la page du site pour voir le bijou apparaître.
+    </div>
+
+    <!-- ========== SECTION 4 ========== -->
+    <h2>4. Ajouter un avis client</h2>
+
+    <div class="step">
+      <p><span class="step-number">1</span> Ouvrez le Google Sheet <code>LMG_BIJOUX_SITE</code></p>
+    </div>
+
+    <div class="step">
+      <p><span class="step-number">2</span> Allez sur l'onglet <code>AVIS_CLIENTS</code></p>
+    </div>
+
+    <div class="step">
+      <p><span class="step-number">3</span> Ajoutez une nouvelle ligne :</p>
+      <table>
+        <tr><th>Colonne</th><th>Exemple</th></tr>
+        <tr><td>nom_client</td><td>Marie L.</td></tr>
+        <tr><td>commentaire</td><td>Un travail remarquable, bijoutier de confiance !</td></tr>
+        <tr><td>note</td><td>5</td></tr>
+        <tr><td>photo_client</td><td>(optionnel) URL de la photo du client</td></tr>
+      </table>
+    </div>
+
+    <div class="warning">
+      <strong>Note :</strong> La note doit être un chiffre entre 1 et 5. La colonne photo_client est optionnelle. Si vous la laissez vide, l'avis s'affichera sans photo.
+    </div>
+
+    <div class="footer">
+      <p>LMG Bijoux — Guide de gestion du site</p>
+    </div>
+  </div>
+</body>
+</html>

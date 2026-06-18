@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Politique de confidentialité — LMG Bijoux</title>
+  <meta name="description" content="Politique de confidentialité du site LMG Bijoux, bijouterie artisanale à Bollène.">
+  <meta name="theme-color" content="#0A0A0A">
+  <link rel="icon" href="favicon.ico" sizes="48x48">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <nav class="nav scrolled" role="navigation" aria-label="Navigation principale">
+    <a href="index.html" class="nav__logo">
+      <svg class="nav__logo-svg" viewBox="0 0 180 40" xmlns="http://www.w3.org/2000/svg">
+        <text x="0" y="30" font-family="'Cormorant Garamond', serif" font-size="28" font-weight="600" fill="#C9A84C" letter-spacing="3">LMG</text>
+        <text x="82" y="30" font-family="'Cormorant Garamond', serif" font-size="28" font-weight="300" fill="#F5F0E8" letter-spacing="2" font-style="italic">Bijoux</text>
+      </svg>
+    </a>
+    <div class="nav__links">
+      <a href="index.html" class="nav__link">Accueil</a>
+      <a href="index.html#services" class="nav__link">Services</a>
+      <a href="index.html#creations" class="nav__link">Galerie</a>
+      <a href="index.html#avis" class="nav__link">Avis</a>
+      <a href="index.html#contact" class="nav__link">Contact</a>
+    </div>
+    <button class="nav__burger" id="navBurgerPrivacy" aria-label="Ouvrir le menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <div class="nav__mobile" id="navMobilePrivacy">
+    <a href="index.html">Accueil</a>
+    <a href="index.html#services">Services</a>
+    <a href="index.html#creations">Galerie</a>
+    <a href="index.html#avis">Avis</a>
+    <a href="index.html#contact">Contact</a>
+  </div>
+
+  <main class="legal">
+    <div id="legalBody">
+    <h1>Politique de confidentialité</h1>
+
+    <h2>Introduction</h2>
+    <p>
+      LMG Bijoux (Laurent Mignot, EI) s'engage à protéger la vie privée des visiteurs de son site. Cette page détaille notre politique en matière de collecte et de traitement des données personnelles.
+    </p>
+
+    <h2>Données collectées</h2>
+    <p>
+      Ce site dispose d'un formulaire de contact qui collecte les informations suivantes : nom, email, téléphone (optionnel) et message. Ces données sont utilisées uniquement pour répondre à votre demande et ne sont pas transmises à des tiers.
+    </p>
+
+    <h2>Cookies</h2>
+    <p>
+      Ce site <strong>n'utilise aucun cookie</strong> de suivi, de publicité ou d'analyse. La seule donnée stockée localement est votre préférence linguistique (français/anglais) via localStorage.
+    </p>
+    <p>
+      Certains services tiers intégrés (iframe Google Maps) peuvent déposer leurs propres cookies selon leur politique respective.
+    </p>
+
+    <h2>Services tiers</h2>
+    <ul>
+      <li><strong>Google Maps</strong> : une carte est intégrée via iframe pour localiser la boutique.</li>
+      <li><strong>Google Fonts</strong> : les polices sont chargées depuis les serveurs de Google.</li>
+      <li><strong>Formspree</strong> : le formulaire de contact utilise Formspree pour le traitement des messages.</li>
+    </ul>
+
+    <h2>Vos droits</h2>
+    <p>
+      Conformément au Règlement Général sur la Protection des Données (RGPD) et à la loi Informatique et Libertés, vous disposez d'un droit d'accès, de rectification, de suppression et d'opposition concernant vos données personnelles.
+    </p>
+    <p>
+      Pour exercer ces droits, contactez-nous :<br>
+      <strong>Téléphone :</strong> 07 81 08 14 67<br>
+      <strong>Email :</strong> TODO<br>
+      <strong>Adresse :</strong> 29 Boulevard Victor Hugo, 84500 Bollène, France
+    </p>
+
+    <h2>Modifications</h2>
+    <p>
+      Cette politique peut être mise à jour. La date de dernière modification est indiquée ci-dessous.
+    </p>
+    <p style="color: var(--gris); font-size: 0.85rem;">
+      Dernière mise à jour : mars 2026
+    </p>
+
+    </div>
+    <p style="margin-top: 3rem;">
+      <a href="index.html">&larr; Retour à l'accueil</a>
+    </p>
+  </main>
+
+  <script>
+    const burger = document.getElementById('navBurgerPrivacy');
+    const mobile = document.getElementById('navMobilePrivacy');
+    if (burger && mobile) {
+      burger.addEventListener('click', () => {
+        burger.classList.toggle('open');
+        mobile.classList.toggle('open');
+      });
+      mobile.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+        burger.classList.remove('open');
+        mobile.classList.remove('open');
+      }));
+    }
+  </script>
+  <script>
+    // Charge le contenu éditable depuis le CMS (data/mentions.json)
+    fetch('data/mentions.json', { cache: 'no-store' })
+      .then(r => r.ok ? r.json() : null)
+      .then(d => { if (d && d.politique_confidentialite && d.politique_confidentialite.html) document.getElementById('legalBody').innerHTML = d.politique_confidentialite.html; })
+      .catch(() => {});
+  </script>
+</body>
+</html>

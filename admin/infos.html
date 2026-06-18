@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Infos & contact — LMG Bijoux</title>
+  <link rel="stylesheet" href="admin.css">
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+</head>
+<body>
+
+  <div id="loginScreen">
+    <div class="brand">LMG Bijoux</div>
+    <h1>Infos &amp; contact</h1>
+    <p>Connectez-vous pour modifier les coordonnées, horaires et le popup.</p>
+    <button class="btn-login" onclick="CMS.login()">Se connecter</button>
+  </div>
+
+  <div id="adminScreen">
+    <div class="topbar">
+      <h1>⚙️ Infos &amp; contact</h1>
+      <span class="status" id="statusEl"></span>
+      <a href="index.html" class="btn btn-ghost btn-sm">← Admin</a>
+      <a href="../index.html#infos" target="_blank" class="btn btn-ghost btn-sm">Voir le site ↗</a>
+      <button class="btn-text" onclick="CMS.logout()">Déconnexion</button>
+    </div>
+
+    <div class="panel active">
+      <div class="section-card">
+        <p class="section-card__title">📍 Coordonnées</p>
+        <div class="fg"><label>Adresse</label><input type="text" id="adresse" placeholder="29 Boulevard Victor Hugo"></div>
+        <div class="frow">
+          <div class="fg"><label>Code postal</label><input type="text" id="code_postal" placeholder="84500"></div>
+          <div class="fg"><label>Ville</label><input type="text" id="ville" placeholder="Bollène"></div>
+        </div>
+        <div class="frow">
+          <div class="fg"><label>Téléphone</label><input type="text" id="telephone" placeholder="07 81 08 14 67"></div>
+          <div class="fg"><label>Email</label><input type="text" id="email" placeholder="contact@lmg-bijoux.fr"></div>
+        </div>
+      </div>
+
+      <div class="section-card">
+        <p class="section-card__title">📱 Réseaux sociaux</p>
+        <div class="fg"><label>Lien Instagram</label><input type="text" id="instagram" placeholder="https://www.instagram.com/lmgbijoux/"></div>
+        <div class="fg"><label>Lien Facebook</label><input type="text" id="facebook" placeholder="https://www.facebook.com/..."></div>
+      </div>
+
+      <div class="section-card">
+        <p class="section-card__title">🕒 Horaires d'ouverture</p>
+        <p class="panel-hint" style="margin-bottom:1rem">Saisissez les horaires de chaque jour (ex : <em>10h00 – 12h00 / 14h00 – 19h00</em>). Écrivez <em>Fermé</em> pour un jour de fermeture.</p>
+        <div class="fg"><label>Lundi</label><input type="text" id="h_lundi"></div>
+        <div class="fg"><label>Mardi</label><input type="text" id="h_mardi"></div>
+        <div class="fg"><label>Mercredi</label><input type="text" id="h_mercredi"></div>
+        <div class="fg"><label>Jeudi</label><input type="text" id="h_jeudi"></div>
+        <div class="fg"><label>Vendredi</label><input type="text" id="h_vendredi"></div>
+        <div class="fg"><label>Samedi</label><input type="text" id="h_samedi"></div>
+        <div class="fg"><label>Dimanche</label><input type="text" id="h_dimanche"></div>
+      </div>
+
+      <div class="section-card">
+        <p class="section-card__title">🔔 Popup promotionnel</p>
+        <div class="fg" style="flex-direction:row;align-items:center;gap:.5rem">
+          <input type="checkbox" id="p_actif" style="width:auto">
+          <label for="p_actif" style="text-transform:none;letter-spacing:0;font-size:.9rem;color:var(--ink)">Afficher le popup sur le site</label>
+        </div>
+        <div class="lang-row">
+          <div class="fg"><label><span class="lang-tag">FR</span> Message</label><textarea id="p_message_fr" rows="2"></textarea></div>
+          <div class="fg"><label><span class="lang-tag">EN</span> Message</label><textarea id="p_message_en" rows="2"></textarea></div>
+        </div>
+        <div class="lang-row">
+          <div class="fg"><label><span class="lang-tag">FR</span> Texte du bouton</label><input type="text" id="p_cta_fr" placeholder="Nous trouver"></div>
+          <div class="fg"><label><span class="lang-tag">EN</span> Texte du bouton</label><input type="text" id="p_cta_en" placeholder="Find us"></div>
+        </div>
+        <div class="frow">
+          <div class="fg"><label>Lien du bouton</label><input type="text" id="p_cta_url" placeholder="#acces"><span class="hint">Ex : #acces, #creations ou une URL complète</span></div>
+          <div class="fg"><label>Délai d'apparition (secondes)</label><input type="number" id="p_delai" min="0" value="5"></div>
+        </div>
+      </div>
+
+      <div class="form-save-row">
+        <button class="btn btn-primary" id="saveBtn" onclick="saveAll()">Enregistrer</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="cms.js"></script>
+  <script>
+  (function () {
+    'use strict';
+    var FILE = 'data/infos.json';
+    var data = {}, sha = '';
+    function v(id) { return document.getElementById(id).value; }
+    function setv(id, val) { var el = document.getElementById(id); if (el) el.value = val == null ? '' : val; }
+
+    CMS.requireAuth(load);
+
+    function load() {
+      CMS.status('saving', 'Chargement…');
+      CMS.load(FILE).then(function (r) {
+        data = r.data; sha = r.sha;
+        var h = data.horaires || {}, p = data.popup || {};
+        setv('adresse', data.adresse); setv('code_postal', data.code_postal); setv('ville', data.ville);
+        setv('telephone', data.telephone); setv('email', data.email);
+        setv('instagram', data.instagram); setv('facebook', data.facebook);
+        ['lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi', 'dimanche'].forEach(function (d) { setv('h_' + d, h[d]); });
+        document.getElementById('p_actif').checked = !!p.actif;
+        setv('p_message_fr', p.message_fr); setv('p_message_en', p.message_en);
+        setv('p_cta_fr', p.cta_label_fr); setv('p_cta_en', p.cta_label_en);
+        setv('p_cta_url', p.cta_url); setv('p_delai', p.delai_secondes == null ? 5 : p.delai_secondes);
+        CMS.status('', '');
+      }).catch(function (e) { CMS.status('error', 'Erreur de chargement'); console.error(e); });
+    }
+
+    window.saveAll = function () {
+      var btn = document.getElementById('saveBtn'); btn.disabled = true;
+      data.adresse = v('adresse').trim();
+      data.code_postal = v('code_postal').trim();
+      data.ville = v('ville').trim();
+      data.telephone = v('telephone').trim();
+      data.telephone_raw = data.telephone.replace(/[^0-9+]/g, '');
+      data.email = v('email').trim();
+      data.instagram = v('instagram').trim();
+      data.facebook = v('facebook').trim();
+      data.horaires = {};
+      ['lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi', 'dimanche'].forEach(function (d) { data.horaires[d] = v('h_' + d).trim(); });
+      data.popup = {
+        actif: document.getElementById('p_actif').checked,
+        message_fr: v('p_message_fr').trim(),
+        message_en: v('p_message_en').trim(),
+        cta_label_fr: v('p_cta_fr').trim(),
+        cta_label_en: v('p_cta_en').trim(),
+        cta_url: v('p_cta_url').trim(),
+        delai_secondes: parseInt(v('p_delai')) || 0
+      };
+      CMS.status('saving', 'Enregistrement…');
+      CMS.save(FILE, data, sha, 'Mise à jour infos & contact').then(function (newSha) {
+        sha = newSha; CMS.status('saved', 'Enregistré ✓');
+        setTimeout(function () { CMS.status('', ''); }, 3000);
+      }).catch(function (e) { CMS.status('error', 'Erreur'); console.error(e); })
+        .finally(function () { btn.disabled = false; });
+    };
+  })();
+  </script>
+</body>
+</html>

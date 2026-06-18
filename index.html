@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LMG Bijoux — Bijouterie artisanale à Bollène | Réparation, Restauration, Expertise</title>
+  <meta name="description" content="LMG Bijoux, bijouterie artisanale à Bollène. Réparation, restauration de bijoux anciens, dépôt-vente et expertise. Laurent Mignot, artisan bijoutier depuis plus de 40 ans.">
+  <meta name="theme-color" content="#0A0A0A">
+  <meta property="og:title" content="LMG Bijoux — Bijouterie artisanale à Bollène">
+  <meta property="og:description" content="Réparation, restauration de bijoux anciens, dépôt-vente et expertise par Laurent Mignot, artisan bijoutier.">
+  <meta property="og:type" content="website">
+
+  <!-- Favicon -->
+  <link rel="icon" href="favicon.ico" sizes="48x48">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Schema.org LocalBusiness + JewelryStore -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": ["LocalBusiness", "JewelryStore"],
+    "name": "LMG Bijoux",
+    "description": "Bijouterie artisanale à Bollène. Réparation, restauration de bijoux anciens, dépôt-vente et conseil expertise de bijoux.",
+    "image": "assets/photo8.jpg",
+    "telephone": "+33781081467",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "29 Boulevard Victor Hugo",
+      "addressLocality": "Bollène",
+      "postalCode": "84500",
+      "addressCountry": "FR"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 44.2804,
+      "longitude": 4.7489
+    },
+    "url": "https://lmgbijoux.fr",
+    "sameAs": [
+      "https://www.instagram.com/lmgbijoux/",
+      "https://www.facebook.com/profile.php?id=100083582131883"
+    ],
+    "openingHoursSpecification": [
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": "Monday", "opens": "14:00", "closes": "19:00" },
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": "Tuesday", "opens": "10:00", "closes": "12:00" },
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": "Tuesday", "opens": "14:00", "closes": "19:00" },
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": "Wednesday", "opens": "10:00", "closes": "12:00" },
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": "Wednesday", "opens": "14:00", "closes": "19:00" },
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": "Thursday", "opens": "10:00", "closes": "12:00" },
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": "Thursday", "opens": "14:00", "closes": "19:00" },
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": "Friday", "opens": "10:00", "closes": "12:00" },
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": "Friday", "opens": "14:00", "closes": "19:00" },
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "10:00", "closes": "12:00" }
+    ],
+    "priceRange": "€€",
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Services bijouterie",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Réparation de bijoux",
+            "description": "Réparation de tous types de bijoux : fermoirs, sertissages, redimensionnement, soudure."
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Restauration de bijoux anciens",
+            "description": "Restauration et remise en état de bijoux anciens et héritages familiaux."
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Expertise de bijoux",
+            "description": "Conseil et expertise de bijoux, évaluation de pièces précieuses."
+          }
+        }
+      ]
+    }
+  }
+  </script>
+</head>
+<body>
+
+  <!-- Loader -->
+  <div class="loader" id="loader">
+    <div class="loader__text" id="loaderText"></div>
+  </div>
+
+  <!-- Custom cursor -->
+  <div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
+  <div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
+
+  <!-- ====== Navigation ====== -->
+  <nav class="nav" id="nav" role="navigation" aria-label="Navigation principale">
+    <a href="#" class="nav__logo">
+      <img class="nav__logo-img" src="assets/logo1.png" alt="LMG Bijoux — Bijouterie Galvanoplastie à Bollène">
+    </a>
+
+    <div class="nav__links">
+      <a href="#hero" class="nav__link" data-fr="Accueil" data-en="Home">Accueil</a>
+      <a href="#services" class="nav__link" data-fr="Services" data-en="Services">Services</a>
+      <a href="#creations" class="nav__link" data-fr="Galerie" data-en="Gallery">Galerie</a>
+      <a href="#avis" class="nav__link" data-fr="Avis" data-en="Reviews">Avis</a>
+      <a href="#instagram" class="nav__link" data-fr="Actualités" data-en="News">Actualités</a>
+      <a href="#infos" class="nav__link" data-fr="Infos" data-en="Info">Infos</a>
+    </div>
+
+    <div class="nav__social">
+      <a href="https://www.instagram.com/lmgbijoux/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+      </a>
+      <a href="https://www.facebook.com/profile.php?id=100083582131883" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+        <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+      </a>
+    </div>
+
+    <!-- Language switcher -->
+    <div class="nav__lang" id="langToggle" role="radiogroup" aria-label="Switch language">
+      <button class="nav__lang-btn active" data-lang="fr">FR</button>
+      <span class="nav__lang-sep">|</span>
+      <button class="nav__lang-btn" data-lang="en">EN</button>
+    </div>
+
+    <button class="nav__cta cta-trigger">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+      <span data-fr="Appeler" data-en="Call">Appeler</span>
+    </button>
+
+    <!-- Burger mobile -->
+    <button class="nav__burger" id="navBurger" aria-label="Ouvrir le menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- Mobile menu -->
+  <div class="nav__mobile" id="navMobile">
+    <a href="#hero" class="nav__mobile-link" data-fr="Accueil" data-en="Home">Accueil</a>
+    <a href="#services" class="nav__mobile-link" data-fr="Services" data-en="Services">Services</a>
+    <a href="#creations" class="nav__mobile-link" data-fr="Galerie" data-en="Gallery">Galerie</a>
+    <a href="#avis" class="nav__mobile-link" data-fr="Avis" data-en="Reviews">Avis</a>
+    <a href="#instagram" class="nav__mobile-link" data-fr="Actualités" data-en="News">Actualités</a>
+    <a href="#infos" class="nav__mobile-link" data-fr="Infos" data-en="Info">Infos</a>
+    <div class="nav__mobile-social">
+      <a href="https://www.instagram.com/lmgbijoux/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+        <svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+      </a>
+      <a href="https://www.facebook.com/profile.php?id=100083582131883" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+        <svg viewBox="0 0 24 24"><path fill="currentColor" d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+      </a>
+    </div>
+    <!-- Mobile language toggle -->
+    <button class="nav__mobile-lang" id="langToggleMobile" aria-label="Switch language">
+      <span>FR</span> / <span>EN</span>
+    </button>
+  </div>
+
+  <!-- ====== CTA Overlay ====== -->
+  <div class="cta-overlay" id="ctaOverlay" role="dialog" aria-label="Contactez-nous" aria-hidden="true">
+    <button class="cta-overlay__close" id="ctaClose" aria-label="Fermer">&times;</button>
+    <div class="cta-overlay__content">
+      <p class="cta-overlay__label" data-fr="Appelez l'atelier" data-en="Call the workshop">Appelez l'atelier</p>
+      <p class="cta-overlay__phone" id="ctaPhone">07 81 08 14 67</p>
+      <div class="cta-overlay__actions">
+        <button class="btn-outline" id="copyPhone" aria-label="Copier le numéro">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+          <span data-fr="Copier le numéro" data-en="Copy number">Copier le numéro</span>
+        </button>
+        <a href="tel:0781081467" class="btn-outline" aria-label="Appeler">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          <span data-fr="Appeler" data-en="Call">Appeler</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====== Mobile Sticky CTA ====== -->
+  <div class="mobile-cta">
+    <button class="btn-cta cta-trigger" aria-label="Contacter l'atelier">
+      <span data-fr="Contacter l'atelier" data-en="Contact the workshop">Contacter l'atelier</span>
+    </button>
+  </div>
+
+  <!-- ====== HERO ====== -->
+  <section class="hero" id="hero">
+    <div class="hero__bg">
+      <img class="hero__img parallax-el" data-parallax-speed="0.08" src="assets/photo8.jpg" alt="Pendentif pique en or avec diamant noir — création LMG Bijoux" loading="eager">
+    </div>
+    <div class="hero__overlay"></div>
+
+    <div class="hero__content">
+      <span class="hero__tag" data-fr="Bijouterie artisanale — Bollène" data-en="Artisan Jewellery — Bollène">Bijouterie artisanale — Bollène</span>
+      <h1 class="hero__title" data-fr="L'or dort<br>dans la <em>pierre.</em>" data-en="Gold sleeps<br>within the <em>stone.</em>">L'or dort<br>dans la <em>pierre.</em></h1>
+      <p class="hero__sub" data-fr="Depuis son atelier au cœur de Bollène, Laurent Mignot réveille l'éclat des bijoux — anciens ou à naître." data-en="From his workshop in the heart of Bollène, Laurent Mignot revives the brilliance of jewellery — antique or yet to be born.">Depuis son atelier au cœur de Bollène, Laurent Mignot réveille l'éclat des bijoux — anciens ou à naître.</p>
+      <div class="hero__cta">
+        <button class="btn-cta cta-trigger" data-fr="Contacter l'atelier" data-en="Contact the workshop">Contacter l'atelier</button>
+        <a href="#creations" class="btn-outline" data-fr="Découvrir" data-en="Discover">Découvrir</a>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ====== ARTISAN ====== -->
+  <section class="artisan" id="artisan">
+    <div class="artisan__text reveal-left">
+      <span class="section-tag" data-fr="L'artisan" data-en="The craftsman">L'artisan</span>
+      <h2 class="section-title" data-fr="Laurent Mignot,<br><em>bijoutier</em>" data-en="Laurent Mignot,<br><em>jeweller</em>">Laurent Mignot,<br><em>bijoutier</em></h2>
+      <p class="artisan__desc" data-fr="Chaque bijou a une histoire. Laurent Mignot le sait mieux que quiconque : entre ses mains, une bague ancienne retrouve sa lumière, un pendentif prend forme à partir d'une idée murmurée. Dans son atelier de Bollène, il travaille le métal avec patience et précision — que ce soit pour redonner vie à un héritage familial ou créer une pièce unique." data-en="Every piece of jewellery tells a story. Laurent Mignot knows this better than anyone: in his hands, an antique ring finds its light again, a pendant takes shape from a whispered idea. In his Bollène workshop, he works metal with patience and precision — whether reviving a family heirloom or creating a unique piece.">
+        Chaque bijou a une histoire. Laurent Mignot le sait mieux que quiconque : entre ses mains, une bague ancienne retrouve sa lumière, un pendentif prend forme à partir d'une idée murmurée. Dans son atelier de Bollène, il travaille le métal avec patience et précision — que ce soit pour redonner vie à un héritage familial ou créer une pièce unique.
+      </p>
+      <p class="artisan__detail" data-fr="« Le bijou, c'est l'émotion qu'on porte sur soi. »" data-en="&quot;A jewel is the emotion you wear.&quot;">« Le bijou, c'est l'émotion qu'on porte sur soi. »</p>
+    </div>
+    <div class="artisan__image reveal-right">
+      <div class="artisan__visual">
+        <img class="artisan__photo" src="assets/photo5.jpg" alt="Bracelet or gravé avec lingot et saphirs — création artisanale LMG Bijoux" loading="lazy" style="object-position: center 45%;">
+        <div class="artisan__photo-border" aria-hidden="true"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== VISION / HISTOIRE ====== -->
+  <section class="vision" id="vision">
+    <div class="vision__inner reveal">
+      <div class="vision__icon" aria-hidden="true">
+        <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+          <circle cx="24" cy="24" r="20" stroke="#C9A84C" stroke-width="0.8" opacity="0.3"/>
+          <circle cx="24" cy="24" r="12" stroke="#C9A84C" stroke-width="0.8" opacity="0.5"/>
+          <circle cx="24" cy="24" r="4" fill="#C9A84C" opacity="0.6"/>
+        </svg>
+      </div>
+      <span class="section-tag" data-fr="Notre vision" data-en="Our vision">Notre vision</span>
+      <h2 class="section-title" data-fr="Plus de 40 ans<br>de <em>passion</em>" data-en="More than 40 years<br>of <em>passion</em>">Plus de 40 ans<br>de <em>passion</em></h2>
+      <p class="vision__text" data-fr="Laurent est passionné de bijouterie depuis l'enfance et exerce ce métier depuis plus de 40 ans. Son travail repose sur la transmission d'un savoir-faire artisanal, le respect des matériaux nobles et la volonté de redonner vie aux bijoux chargés d'histoire." data-en="Laurent has been passionate about jewellery since childhood and has practised this craft for over 40 years. His work is built on the transmission of artisanal expertise, respect for noble materials, and the desire to breathe new life into jewellery steeped in history.">
+        Laurent est passionné de bijouterie depuis l'enfance et exerce ce métier depuis plus de 40 ans. Son travail repose sur la transmission d'un savoir-faire artisanal, le respect des matériaux nobles et la volonté de redonner vie aux bijoux chargés d'histoire.
+      </p>
+      <div class="vision__line" aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <!-- ====== BOUTIQUE ====== -->
+  <section class="boutique reveal" id="boutique">
+    <div class="boutique__inner">
+      <div class="boutique__img-wrap">
+        <img class="boutique__img" src="assets/photo40.jpg" alt="Intérieur de la boutique LMG Bijoux à Bollène" loading="lazy">
+      </div>
+      <div class="boutique__text">
+        <span class="section-tag" data-fr="La boutique" data-en="The shop">La boutique</span>
+        <h2 class="section-title" data-fr="Un écrin<br>à <em>Bollène</em>" data-en="A jewel box<br>in <em>Bollène</em>">Un écrin<br>à <em>Bollène</em></h2>
+        <p class="boutique__desc" data-fr="Poussez la porte du 29 Boulevard Victor Hugo et découvrez un univers où chaque vitrine raconte une histoire. Bijoux anciens, créations sur mesure et pièces uniques vous attendent dans un cadre chaleureux." data-en="Push open the door at 29 Boulevard Victor Hugo and discover a world where every display case tells a story. Antique jewellery, bespoke creations and unique pieces await you in a warm setting.">Poussez la porte du 29 Boulevard Victor Hugo et découvrez un univers où chaque vitrine raconte une histoire. Bijoux anciens, créations sur mesure et pièces uniques vous attendent dans un cadre chaleureux.</p>
+        <div class="boutique__actions">
+          <button class="btn-cta cta-trigger" data-fr="Contacter l'atelier" data-en="Contact the workshop">Contacter l'atelier</button>
+          <a href="#acces" class="btn-outline" data-fr="Voir l'accès" data-en="Find us">Voir l'accès</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== SERVICES (fusionné Création + Réparation) ====== -->
+  <section class="services-new" id="services">
+    <div style="text-align:center;" class="reveal">
+      <span class="section-tag" data-fr="Nos services" data-en="Our services">Nos services</span>
+      <h2 class="section-title" data-fr="Savoir-faire<br>& <em>expertise</em>" data-en="Craftsmanship<br>& <em>expertise</em>">Savoir-faire<br>& <em>expertise</em></h2>
+    </div>
+
+    <!-- 4 services cards -->
+    <div class="services-new__grid">
+      <!-- Réparation -->
+      <div class="service-card reveal" style="transition-delay: 0.1s">
+        <div class="service-card__icon">
+          <svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="28" cy="28" r="24" stroke="#C9A84C" stroke-width="0.8" opacity="0.2"/>
+            <path d="M20 36l4-6 3 3 5-8" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="28" cy="22" r="8" stroke="#C9A84C" stroke-width="1.2" fill="none"/>
+            <path d="M25 22l2 2 4-4" stroke="#C9A84C" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <h3 class="service-card__title" data-fr="Réparation" data-en="Repair">Réparation</h3>
+        <p class="service-card__desc" data-fr="Fermoir cassé, pierre dessertie, anneau usé… Chaque bijou mérite une seconde vie. Réparation minutieuse de tous types de bijoux." data-en="Broken clasp, loose stone, worn band… Every jewel deserves a second life. Meticulous repair of all types of jewellery.">Fermoir cassé, pierre dessertie, anneau usé… Chaque bijou mérite une seconde vie. Réparation minutieuse de tous types de bijoux.</p>
+      </div>
+
+      <!-- Restauration bijoux anciens -->
+      <div class="service-card reveal" style="transition-delay: 0.2s">
+        <div class="service-card__icon">
+          <svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="28" cy="28" r="24" stroke="#C9A84C" stroke-width="0.8" opacity="0.2"/>
+            <rect x="20" y="18" width="16" height="20" rx="2" stroke="#C9A84C" stroke-width="1.2" fill="none"/>
+            <path d="M24 24h8M24 28h8M24 32h5" stroke="#C9A84C" stroke-width="1" stroke-linecap="round" opacity="0.7"/>
+            <circle cx="36" cy="36" r="6" stroke="#C9A84C" stroke-width="1.2" fill="none"/>
+            <path d="M34 36l1.5 1.5 3-3" stroke="#C9A84C" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <h3 class="service-card__title" data-fr="Restauration de bijoux anciens" data-en="Antique jewellery restoration">Restauration de bijoux anciens</h3>
+        <p class="service-card__desc" data-fr="Redonner leur splendeur d'origine aux bijoux chargés d'histoire. Restauration respectueuse des pièces anciennes et héritages familiaux." data-en="Restoring original splendour to jewellery steeped in history. Respectful restoration of antique pieces and family heirlooms.">Redonner leur splendeur d'origine aux bijoux chargés d'histoire. Restauration respectueuse des pièces anciennes et héritages familiaux.</p>
+      </div>
+
+      <!-- Dépôt-vente -->
+      <div class="service-card reveal" style="transition-delay: 0.3s">
+        <div class="service-card__icon">
+          <svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="28" cy="28" r="24" stroke="#C9A84C" stroke-width="0.8" opacity="0.2"/>
+            <path d="M22 34V24a2 2 0 012-2h8a2 2 0 012 2v10" stroke="#C9A84C" stroke-width="1.2" fill="none"/>
+            <path d="M20 34h16" stroke="#C9A84C" stroke-width="1.2" stroke-linecap="round"/>
+            <circle cx="28" cy="28" r="3" stroke="#C9A84C" stroke-width="1" fill="none"/>
+            <path d="M28 26v4M26 28h4" stroke="#C9A84C" stroke-width="0.8" stroke-linecap="round" opacity="0.7"/>
+          </svg>
+        </div>
+        <h3 class="service-card__title" data-fr="Dépôt-vente" data-en="Consignment">Dépôt-vente</h3>
+        <p class="service-card__desc" data-fr="Confiez vos bijoux à la boutique pour leur trouver un nouveau propriétaire. Un service de confiance pour vendre ou acquérir des pièces de qualité." data-en="Entrust your jewellery to the shop to find a new owner. A trusted service to sell or acquire quality pieces.">Confiez vos bijoux à la boutique pour leur trouver un nouveau propriétaire. Un service de confiance pour vendre ou acquérir des pièces de qualité.</p>
+      </div>
+
+      <!-- Conseil / Expertise -->
+      <div class="service-card reveal" style="transition-delay: 0.4s">
+        <div class="service-card__icon">
+          <svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="28" cy="28" r="24" stroke="#C9A84C" stroke-width="0.8" opacity="0.2"/>
+            <circle cx="28" cy="26" r="8" stroke="#C9A84C" stroke-width="1.2" fill="none"/>
+            <circle cx="28" cy="26" r="4" stroke="#C9A84C" stroke-width="0.8" fill="none" opacity="0.5"/>
+            <line x1="28" y1="34" x2="28" y2="40" stroke="#C9A84C" stroke-width="1.2" stroke-linecap="round"/>
+            <line x1="25" y1="38" x2="31" y2="38" stroke="#C9A84C" stroke-width="1" stroke-linecap="round" opacity="0.7"/>
+          </svg>
+        </div>
+        <h3 class="service-card__title" data-fr="Conseil & Expertise" data-en="Advice & Appraisal">Conseil & Expertise</h3>
+        <p class="service-card__desc" data-fr="Évaluation et expertise de vos bijoux par un professionnel passionné. Conseils personnalisés pour l'achat, la vente ou l'entretien de vos pièces." data-en="Evaluation and appraisal of your jewellery by a passionate professional. Personalised advice for buying, selling or maintaining your pieces.">Évaluation et expertise de vos bijoux par un professionnel passionné. Conseils personnalisés pour l'achat, la vente ou l'entretien de vos pièces.</p>
+      </div>
+    </div>
+
+    <!-- Icônes spécialités : Bijoux, Pierres, Métaux -->
+    <div class="services-new__specialties reveal">
+      <div class="specialty-group">
+        <h4 class="specialty-group__title" data-fr="Bijoux" data-en="Jewellery">Bijoux</h4>
+        <div class="specialty-group__icons">
+          <!-- Boucle d'oreille -->
+          <div class="specialty-icon" title="Boucle d'oreille">
+            <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+              <circle cx="18" cy="10" r="2" stroke="#C9A84C" stroke-width="1"/>
+              <path d="M18 12v4" stroke="#C9A84C" stroke-width="1"/>
+              <ellipse cx="18" cy="22" rx="6" ry="8" stroke="#C9A84C" stroke-width="1" fill="none"/>
+              <circle cx="18" cy="28" r="2" fill="#C9A84C" opacity="0.4"/>
+            </svg>
+            <span data-fr="Boucle d'oreille" data-en="Earring">Boucle d'oreille</span>
+          </div>
+          <!-- Collier -->
+          <div class="specialty-icon" title="Collier">
+            <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+              <path d="M8 12c0 10 10 16 10 16s10-6 10-16" stroke="#C9A84C" stroke-width="1" fill="none"/>
+              <circle cx="18" cy="28" r="3" stroke="#C9A84C" stroke-width="1" fill="none"/>
+              <circle cx="18" cy="28" r="1" fill="#C9A84C" opacity="0.5"/>
+            </svg>
+            <span data-fr="Collier" data-en="Necklace">Collier</span>
+          </div>
+          <!-- Bracelet -->
+          <div class="specialty-icon" title="Bracelet">
+            <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+              <ellipse cx="18" cy="18" rx="12" ry="8" stroke="#C9A84C" stroke-width="1" fill="none"/>
+              <ellipse cx="18" cy="18" rx="10" ry="6" stroke="#C9A84C" stroke-width="0.6" fill="none" opacity="0.5"/>
+              <circle cx="6" cy="18" r="1.5" fill="#C9A84C" opacity="0.4"/>
+            </svg>
+            <span data-fr="Bracelet" data-en="Bracelet">Bracelet</span>
+          </div>
+          <!-- Montre -->
+          <div class="specialty-icon" title="Montre">
+            <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+              <rect x="11" y="6" width="14" height="4" rx="1" stroke="#C9A84C" stroke-width="0.8" fill="none" opacity="0.5"/>
+              <rect x="11" y="26" width="14" height="4" rx="1" stroke="#C9A84C" stroke-width="0.8" fill="none" opacity="0.5"/>
+              <circle cx="18" cy="18" r="8" stroke="#C9A84C" stroke-width="1" fill="none"/>
+              <line x1="18" y1="13" x2="18" y2="18" stroke="#C9A84C" stroke-width="1" stroke-linecap="round"/>
+              <line x1="18" y1="18" x2="22" y2="16" stroke="#C9A84C" stroke-width="0.8" stroke-linecap="round"/>
+            </svg>
+            <span data-fr="Montre" data-en="Watch">Montre</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="specialty-group">
+        <h4 class="specialty-group__title" data-fr="Pierres" data-en="Gemstones">Pierres</h4>
+        <div class="specialty-group__icons">
+          <!-- Émeraude -->
+          <div class="specialty-icon" title="Émeraude">
+            <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+              <polygon points="18,6 26,12 26,24 18,30 10,24 10,12" stroke="#2D8C5A" stroke-width="1" fill="none"/>
+              <polygon points="18,10 23,14 23,22 18,26 13,22 13,14" stroke="#2D8C5A" stroke-width="0.6" fill="none" opacity="0.5"/>
+            </svg>
+            <span data-fr="Émeraude" data-en="Emerald">Émeraude</span>
+          </div>
+          <!-- Saphir -->
+          <div class="specialty-icon" title="Saphir">
+            <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+              <polygon points="18,6 28,16 24,30 12,30 8,16" stroke="#2856A3" stroke-width="1" fill="none"/>
+              <line x1="18" y1="6" x2="18" y2="30" stroke="#2856A3" stroke-width="0.5" opacity="0.4"/>
+              <line x1="8" y1="16" x2="28" y2="16" stroke="#2856A3" stroke-width="0.5" opacity="0.4"/>
+            </svg>
+            <span data-fr="Saphir" data-en="Sapphire">Saphir</span>
+          </div>
+          <!-- Rubis -->
+          <div class="specialty-icon" title="Rubis">
+            <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+              <path d="M18 6l8 10-8 18-8-18 8-10z" stroke="#B22234" stroke-width="1" fill="none"/>
+              <path d="M10 16h16" stroke="#B22234" stroke-width="0.5" opacity="0.4"/>
+              <path d="M14 16l4-10 4 10" stroke="#B22234" stroke-width="0.5" opacity="0.4"/>
+            </svg>
+            <span data-fr="Rubis" data-en="Ruby">Rubis</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="specialty-group">
+        <h4 class="specialty-group__title" data-fr="Métaux" data-en="Metals">Métaux</h4>
+        <div class="specialty-group__icons">
+          <!-- Or -->
+          <div class="specialty-icon" title="Or">
+            <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+              <rect x="8" y="12" width="20" height="12" rx="2" stroke="#C9A84C" stroke-width="1" fill="none"/>
+              <rect x="12" y="16" width="12" height="4" rx="1" fill="#C9A84C" opacity="0.3"/>
+              <text x="18" y="20" font-family="serif" font-size="7" fill="#C9A84C" text-anchor="middle" font-weight="600">Au</text>
+            </svg>
+            <span data-fr="Or" data-en="Gold">Or</span>
+          </div>
+          <!-- Argent -->
+          <div class="specialty-icon" title="Argent">
+            <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+              <rect x="8" y="12" width="20" height="12" rx="2" stroke="#A0A0A0" stroke-width="1" fill="none"/>
+              <rect x="12" y="16" width="12" height="4" rx="1" fill="#A0A0A0" opacity="0.3"/>
+              <text x="18" y="20" font-family="serif" font-size="7" fill="#A0A0A0" text-anchor="middle" font-weight="600">Ag</text>
+            </svg>
+            <span data-fr="Argent" data-en="Silver">Argent</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== CRÉATIONS / GALERIE ====== -->
+  <section class="creations" id="creations">
+    <div style="text-align:center;" class="reveal">
+      <span class="section-tag" data-fr="Collection" data-en="Collection">Collection</span>
+      <h2 class="section-title" data-fr="Bijoux anciens<br>& <em>créations</em>" data-en="Antique jewellery<br>& <em>creations</em>">Bijoux anciens<br>& <em>créations</em></h2>
+    </div>
+
+    <!-- Galerie statique (fallback quand Google Sheet non configuré) -->
+    <div class="creations__grid" id="galerieGrid">
+      <div class="creation-card creation-card--light reveal" style="transition-delay: 0.1s">
+        <img class="creation-card__img" src="assets/photo1.jpg" alt="Pendentif aigue-marine taille émeraude, diamants et cordon noir" loading="lazy" style="object-position: center 50%;">
+        <div class="creation-card__content">
+          <h3 class="creation-card__title">Pendentif Aigue-marine</h3>
+          <p class="creation-card__desc" data-fr="Pierre taille émeraude sertie de diamants — un éclat d'océan capturé dans l'or." data-en="Emerald-cut stone set with diamonds — an ocean's sparkle captured in gold.">Pierre taille émeraude sertie de diamants — un éclat d'océan capturé dans l'or.</p>
+        </div>
+      </div>
+      <div class="creation-card creation-card--light reveal" style="transition-delay: 0.15s">
+        <img class="creation-card__img" src="assets/photo2.jpg" alt="Bague or et saphirs bleus avec diamants" loading="lazy" style="object-position: center 38%;">
+        <div class="creation-card__content">
+          <h3 class="creation-card__title">Bague Saphirs & Or</h3>
+          <p class="creation-card__desc" data-fr="Saphirs royaux et diamants sur or jaune — un bijou d'exception au caractère affirmé." data-en="Royal sapphires and diamonds on yellow gold — an exceptional jewel with bold character.">Saphirs royaux et diamants sur or jaune — un bijou d'exception au caractère affirmé.</p>
+        </div>
+      </div>
+      <div class="creation-card creation-card--light reveal" style="transition-delay: 0.2s">
+        <img class="creation-card__img" src="assets/photo3.jpg" alt="Bague or blanc perles de Tahiti" loading="lazy" style="object-position: 55% 35%;">
+        <div class="creation-card__content">
+          <h3 class="creation-card__title">Perles de Tahiti</h3>
+          <p class="creation-card__desc" data-fr="Création or blanc et perles noires — l'alliance de la mer et du métal précieux." data-en="White gold and black pearl creation — the union of sea and precious metal.">Création or blanc et perles noires — l'alliance de la mer et du métal précieux.</p>
+        </div>
+      </div>
+      <div class="creation-card reveal" style="transition-delay: 0.25s">
+        <img class="creation-card__img" src="assets/photo4.jpg" alt="Bracelet or ciselé avec motifs artisanaux" loading="lazy" style="object-position: center 35%;">
+        <div class="creation-card__content">
+          <h3 class="creation-card__title">Bracelet Or ciselé</h3>
+          <p class="creation-card__desc" data-fr="Motifs ciselés dans l'or — un travail de patience qui raconte un savoir-faire ancestral." data-en="Chiselled gold patterns — patient work that speaks of ancestral craftsmanship.">Motifs ciselés dans l'or — un travail de patience qui raconte un savoir-faire ancestral.</p>
+        </div>
+      </div>
+      <div class="creation-card reveal" style="transition-delay: 0.3s">
+        <img class="creation-card__img" src="assets/photo6.jpg" alt="Trio de bracelets joncs en or" loading="lazy" style="object-position: center 35%;">
+        <div class="creation-card__content">
+          <h3 class="creation-card__title">Trio de Joncs Or</h3>
+          <p class="creation-card__desc" data-fr="Torsadé, lisse, fin — trois écritures du même métal, à porter seul ou ensemble." data-en="Twisted, smooth, fine — three expressions of the same metal, worn alone or together.">Torsadé, lisse, fin — trois écritures du même métal, à porter seul ou ensemble.</p>
+        </div>
+      </div>
+      <div class="creation-card reveal" style="transition-delay: 0.35s">
+        <img class="creation-card__img" src="assets/photo7.jpg" alt="Bague or avec topaze bleue" loading="lazy" style="object-position: center 40%;">
+        <div class="creation-card__content">
+          <h3 class="creation-card__title">Bague Topaze bleue</h3>
+          <p class="creation-card__desc" data-fr="Coussin de topaze enchâssé dans l'or — la couleur du ciel dans un écrin intemporel." data-en="Cushion topaz set in gold — the colour of sky in a timeless setting.">Coussin de topaze enchâssé dans l'or — la couleur du ciel dans un écrin intemporel.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== AVIS CLIENTS ====== -->
+  <section class="avis" id="avis">
+    <div class="reveal">
+      <span class="section-tag" data-fr="Témoignages" data-en="Testimonials">Témoignages</span>
+      <h2 class="section-title" data-fr="Ils en <em>parlent</em>" data-en="What they <em>say</em>">Ils en <em>parlent</em></h2>
+    </div>
+    <div class="avis__grid" id="avisGrid">
+      <!-- Vrais avis Google (fallback) — seront remplacés par Google Sheet -->
+      <div class="avis-card reveal" style="transition-delay: 0.1s">
+        <div class="avis-card__quote">&ldquo;</div>
+        <p class="avis-card__text" data-fr="Service exceptionnel ! Ce bijoutier a ajusté ma montre à ma taille avec une précision parfaite. Seul dans son atelier, il a été rapide, professionnel et très accueillant. Je le recommande vivement !" data-en="Exceptional service! This jeweller adjusted my watch to size with perfect precision. Working alone in his workshop, he was fast, professional and very welcoming. Highly recommend!">Service exceptionnel ! Ce bijoutier a ajusté ma montre à ma taille avec une précision parfaite. Seul dans son atelier, il a été rapide, professionnel et très accueillant. Je le recommande vivement !</p>
+        <p class="avis-card__author">Matteo S.</p>
+        <div class="avis-card__stars">★★★★★</div>
+      </div>
+      <div class="avis-card reveal" style="transition-delay: 0.2s">
+        <div class="avis-card__quote">&ldquo;</div>
+        <p class="avis-card__text" data-fr="Création de bijoux plus qu'à la hauteur de mes attentes ! Bijoutier à l'écoute, très sympathique avec beaucoup d'humour. Un bonheur de passer le voir." data-en="Jewellery creation far beyond my expectations! A jeweller who listens, very friendly with great humour. A joy to visit.">Création de bijoux plus qu'à la hauteur de mes attentes ! Bijoutier à l'écoute, très sympathique avec beaucoup d'humour. Un bonheur de passer le voir.</p>
+        <p class="avis-card__author">Laura D.</p>
+        <div class="avis-card__stars">★★★★★</div>
+      </div>
+      <div class="avis-card reveal" style="transition-delay: 0.3s">
+        <div class="avis-card__quote">&ldquo;</div>
+        <p class="avis-card__text" data-fr="Une adresse à retenir, un commerçant à votre écoute et des bijoux que l'on ne voit pas partout et pour tous les budgets. Mention spéciale pour les montres vintages." data-en="An address to remember, a shopkeeper who truly listens, and jewellery you won't find everywhere, for all budgets. Special mention for the vintage watches.">Une adresse à retenir, un commerçant à votre écoute et des bijoux que l'on ne voit pas partout et pour tous les budgets. Mention spéciale pour les montres vintages.</p>
+        <p class="avis-card__author">Jean-Yves S.</p>
+        <div class="avis-card__stars">★★★★★</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== PARALLAX SOLEIL (logo) ====== -->
+  <section class="parallax-sun" id="parallaxSun" aria-hidden="true">
+    <div class="parallax-sun__bg parallax-el" data-parallax-speed="0.15">
+      <svg class="parallax-sun__svg" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+        <!-- Soleil stylisé LMG -->
+        <circle cx="200" cy="200" r="60" stroke="#C9A84C" stroke-width="1" fill="none" opacity="0.3"/>
+        <circle cx="200" cy="200" r="40" stroke="#C9A84C" stroke-width="0.8" fill="none" opacity="0.2"/>
+        <circle cx="200" cy="200" r="20" fill="#C9A84C" opacity="0.08"/>
+        <!-- Rayons -->
+        <g stroke="#C9A84C" stroke-width="0.6" opacity="0.2">
+          <line x1="200" y1="130" x2="200" y2="80"/>
+          <line x1="200" y1="270" x2="200" y2="320"/>
+          <line x1="130" y1="200" x2="80" y2="200"/>
+          <line x1="270" y1="200" x2="320" y2="200"/>
+          <line x1="150" y1="150" x2="115" y2="115"/>
+          <line x1="250" y1="250" x2="285" y2="285"/>
+          <line x1="250" y1="150" x2="285" y2="115"/>
+          <line x1="150" y1="250" x2="115" y2="285"/>
+          <!-- Rayons secondaires -->
+          <line x1="175" y1="137" x2="160" y2="100"/>
+          <line x1="225" y1="137" x2="240" y2="100"/>
+          <line x1="137" y1="175" x2="100" y2="160"/>
+          <line x1="137" y1="225" x2="100" y2="240"/>
+          <line x1="263" y1="175" x2="300" y2="160"/>
+          <line x1="263" y1="225" x2="300" y2="240"/>
+          <line x1="175" y1="263" x2="160" y2="300"/>
+          <line x1="225" y1="263" x2="240" y2="300"/>
+        </g>
+        <!-- Texte central -->
+        <text x="200" y="205" font-family="'Cormorant Garamond', serif" font-size="16" fill="#C9A84C" text-anchor="middle" opacity="0.25" letter-spacing="4">LMG</text>
+      </svg>
+    </div>
+  </section>
+
+  <!-- ====== INSTAGRAM FEED ====== -->
+  <section class="instagram-section" id="instagram">
+    <div style="text-align:center;" class="reveal">
+      <span class="section-tag" data-fr="Actualités" data-en="News">Actualités</span>
+      <h2 class="section-title" data-fr="Inspirations<br>& <em>nouveautés</em>" data-en="Inspirations<br>& <em>latest news</em>">Inspirations<br>& <em>nouveautés</em></h2>
+      <p class="instagram-section__intro" data-fr="Suivez nos dernières créations et actualités sur Instagram." data-en="Follow our latest creations and news on Instagram.">Suivez nos dernières créations et actualités sur Instagram.</p>
+    </div>
+    <div class="instagram-embed reveal" id="instagramFeed">
+      <blockquote class="instagram-media"
+        data-instgrm-permalink="https://www.instagram.com/lmgbijoux/"
+        data-instgrm-version="14"
+        style="background:#0a0a0a; border:1px solid rgba(201,168,76,0.12); border-radius:0; margin:0 auto; max-width:540px; width:100%; padding:0;">
+      </blockquote>
+    </div>
+    <script async src="//www.instagram.com/embed.js"></script>
+  </section>
+
+  <!-- ====== INFOS, HORAIRES & CONTACT ====== -->
+  <section class="infos" id="infos">
+    <div class="reveal" style="text-align:center;">
+      <span class="section-tag" data-fr="Pratique" data-en="Practical">Pratique</span>
+      <h2 class="section-title" data-fr="Infos & <em>horaires</em>" data-en="Info & <em>hours</em>">Infos & <em>horaires</em></h2>
+    </div>
+    <div class="infos__grid">
+      <!-- Carte Horaires -->
+      <div class="infos__card infos__card--horaires reveal-left">
+        <div class="infos__card-header">
+          <div class="infos__card-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <h3 class="infos__card-title" data-fr="Horaires d'ouverture" data-en="Opening hours">Horaires d'ouverture</h3>
+        </div>
+        <table class="horaires__table">
+          <tbody>
+            <tr data-day="1"><td data-fr="Lundi" data-en="Monday">Lundi</td><td>14h00 – 19h00</td></tr>
+            <tr data-day="2"><td data-fr="Mardi" data-en="Tuesday">Mardi</td><td>10h00 – 12h00 <span class="horaires__sep">/</span> 14h00 – 19h00</td></tr>
+            <tr data-day="3"><td data-fr="Mercredi" data-en="Wednesday">Mercredi</td><td>10h00 – 12h00 <span class="horaires__sep">/</span> 14h00 – 19h00</td></tr>
+            <tr data-day="4"><td data-fr="Jeudi" data-en="Thursday">Jeudi</td><td>10h00 – 12h00 <span class="horaires__sep">/</span> 14h00 – 19h00</td></tr>
+            <tr data-day="5"><td data-fr="Vendredi" data-en="Friday">Vendredi</td><td>10h00 – 12h00 <span class="horaires__sep">/</span> 14h00 – 19h00</td></tr>
+            <tr data-day="6"><td data-fr="Samedi" data-en="Saturday">Samedi</td><td>10h00 – 12h00</td></tr>
+            <tr data-day="0" class="horaires__closed"><td data-fr="Dimanche" data-en="Sunday">Dimanche</td><td data-fr="Fermé" data-en="Closed">Fermé</td></tr>
+          </tbody>
+        </table>
+        <p class="horaires__note">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="vertical-align: -2px; margin-right: 4px;"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          <span data-fr="Horaires susceptibles de changer, appelez avant." data-en="Hours may vary, please call ahead.">Horaires susceptibles de changer, appelez avant.</span>
+        </p>
+      </div>
+
+      <!-- Carte Contact -->
+      <div class="infos__card infos__card--contact reveal-right">
+        <div class="infos__card-header">
+          <div class="infos__card-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <h3 class="infos__card-title" data-fr="Nous trouver" data-en="Find us">Nous trouver</h3>
+        </div>
+        <div class="infos__items">
+          <div class="infos__item">
+            <div class="infos__item-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div class="infos__item-text">
+              <strong data-fr="Adresse" data-en="Address">Adresse</strong>
+              <span data-info="address">29 Boulevard Victor Hugo<br>84500 Bollène</span>
+            </div>
+          </div>
+          <div class="infos__item">
+            <div class="infos__item-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            </div>
+            <div class="infos__item-text">
+              <strong data-fr="Téléphone" data-en="Phone">Téléphone</strong>
+              <span data-info="phone">07 81 08 14 67</span>
+            </div>
+          </div>
+          <div class="infos__item">
+            <div class="infos__item-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
+            </div>
+            <div class="infos__item-text">
+              <strong data-fr="Réseaux" data-en="Social">Réseaux</strong>
+              <span>
+                <a href="https://www.instagram.com/lmgbijoux/" target="_blank" rel="noopener noreferrer">Instagram</a>
+                <span class="infos__dot">·</span>
+                <a href="https://www.facebook.com/profile.php?id=100083582131883" target="_blank" rel="noopener noreferrer">Facebook</a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ====== ACCÈS / MAP ====== -->
+  <section class="acces" id="acces">
+    <div style="text-align:center;" class="reveal">
+      <span class="section-tag" data-fr="Nous trouver" data-en="Find us">Nous trouver</span>
+      <h2 class="section-title" data-fr="Venez à <em>l'atelier</em>" data-en="Visit the <em>workshop</em>">Venez à <em>l'atelier</em></h2>
+    </div>
+    <div class="acces__box reveal">
+      <div class="acces__map">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2856.5!2d4.7489!3d44.2804!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12b59f1a4d7e2b0f%3A0x0!2s29+Boulevard+Victor+Hugo%2C+84500+Boll%C3%A8ne!5e0!3m2!1sfr!2sfr!4v1700000000000"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Carte Google Maps — LMG Bijoux, 29 Boulevard Victor Hugo, Bollène">
+        </iframe>
+      </div>
+      <div class="acces__info">
+        <p class="acces__address">
+          <strong>LMG Bijoux</strong><br>
+          <span data-info="address">29 Boulevard Victor Hugo<br>84500 Bollène</span>
+        </p>
+        <p class="acces__phone">07 81 08 14 67</p>
+        <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+          <a href="https://www.google.com/maps/dir/?api=1&destination=29+Boulevard+Victor+Hugo+84500+Boll%C3%A8ne" target="_blank" rel="noopener noreferrer" class="btn-cta">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span data-fr="Itinéraire" data-en="Directions">Itinéraire</span>
+          </a>
+          <button class="btn-outline cta-trigger" data-fr="Appeler" data-en="Call">Appeler</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== FOOTER ====== -->
+  <footer class="footer" id="footer">
+    <div class="footer__legal">
+      <span>&copy; 2026 LMG Bijoux — <span data-fr="Tous droits réservés" data-en="All rights reserved">Tous droits réservés</span></span>
+      <span class="footer__sep">|</span>
+      <a href="mentions-legales.html" data-fr="Mentions légales" data-en="Legal notice">Mentions légales</a>
+      <span class="footer__sep">|</span>
+      <a href="politique-confidentialite.html" data-fr="Politique de confidentialité" data-en="Privacy policy">Politique de confidentialité</a>
+      <span class="footer__easter" id="easterEgg" aria-hidden="true">Le Puy</span>
+    </div>
+  </footer>
+
+  <!-- Easter egg popup -->
+  <div class="easter-popup" id="easterPopup" role="dialog" aria-hidden="true">
+    <div class="easter-popup__svg" id="easterSvg"></div>
+    <p class="easter-popup__text">Ici, la pierre devient éclat.</p>
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

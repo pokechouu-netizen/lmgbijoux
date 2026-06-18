@@ -1,0 +1,53 @@
+{
+  "_commentaire": "Galerie des créations / bijoux. Modifiable depuis l'admin (/admin → Galerie). Après enregistrement, le site se met à jour automatiquement en ~1 minute.",
+  "creations": [
+    {
+      "id": "cr1",
+      "image": "assets/photo1.jpg",
+      "nom": "Pendentif Aigue-marine",
+      "desc_fr": "Pierre taille émeraude sertie de diamants — un éclat d'océan capturé dans l'or.",
+      "desc_en": "Emerald-cut stone set with diamonds — an ocean's sparkle captured in gold.",
+      "visible": true
+    },
+    {
+      "id": "cr2",
+      "image": "assets/photo2.jpg",
+      "nom": "Bague Saphirs & Or",
+      "desc_fr": "Saphirs royaux et diamants sur or jaune — un bijou d'exception au caractère affirmé.",
+      "desc_en": "Royal sapphires and diamonds on yellow gold — an exceptional jewel with bold character.",
+      "visible": true
+    },
+    {
+      "id": "cr3",
+      "image": "assets/photo3.jpg",
+      "nom": "Perles de Tahiti",
+      "desc_fr": "Création or blanc et perles noires — l'alliance de la mer et du métal précieux.",
+      "desc_en": "White gold and black pearl creation — the union of sea and precious metal.",
+      "visible": true
+    },
+    {
+      "id": "cr4",
+      "image": "assets/photo4.jpg",
+      "nom": "Bracelet Or ciselé",
+      "desc_fr": "Motifs ciselés dans l'or — un travail de patience qui raconte un savoir-faire ancestral.",
+      "desc_en": "Chiselled gold patterns — patient work that speaks of ancestral craftsmanship.",
+      "visible": true
+    },
+    {
+      "id": "cr5",
+      "image": "assets/photo6.jpg",
+      "nom": "Trio de Joncs Or",
+      "desc_fr": "Torsadé, lisse, fin — trois écritures du même métal, à porter seul ou ensemble.",
+      "desc_en": "Twisted, smooth, fine — three expressions of the same metal, worn alone or together.",
+      "visible": true
+    },
+    {
+      "id": "cr6",
+      "image": "assets/photo7.jpg",
+      "nom": "Bague Topaze bleue",
+      "desc_fr": "Coussin de topaze enchâssé dans l'or — la couleur du ciel dans un écrin intemporel.",
+      "desc_en": "Cushion topaz set in gold — the colour of sky in a timeless setting.",
+      "visible": true
+    }
+  ]
+}

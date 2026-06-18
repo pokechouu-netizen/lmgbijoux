@@ -1,0 +1,32 @@
+{
+  "_commentaire": "Coordonnées, horaires, réseaux & popup. Modifiable depuis l'admin (/admin → Infos & contact).",
+  "adresse": "29 Boulevard Victor Hugo",
+  "code_postal": "84500",
+  "ville": "Bollène",
+  "telephone": "07 81 08 14 67",
+  "telephone_raw": "0781081467",
+  "email": "",
+  "instagram": "https://www.instagram.com/lmgbijoux/",
+  "facebook": "https://www.facebook.com/profile.php?id=100083582131883",
+  "horaires": {
+    "lundi": "14h00 – 19h00",
+    "mardi": "10h00 – 12h00 / 14h00 – 19h00",
+    "mercredi": "10h00 – 12h00 / 14h00 – 19h00",
+    "jeudi": "10h00 – 12h00 / 14h00 – 19h00",
+    "vendredi": "10h00 – 12h00 / 14h00 – 19h00",
+    "samedi": "10h00 – 12h00",
+    "dimanche": "Fermé"
+  },
+  "_commentaire_popup": "Popup promotionnel — mettez actif à true pour l'afficher. Bilingue FR/EN.",
+  "popup": {
+    "actif": false,
+    "message_fr": "Bijoux anciens, créations sur mesure et réparations — passez à l'atelier !",
+    "message_en": "Antique jewellery, bespoke creations and repairs — visit the workshop!",
+    "cta_label_fr": "Nous trouver",
+    "cta_label_en": "Find us",
+    "cta_url": "#acces",
+    "delai_secondes": 5
+  },
+  "_commentaire_hook": "URL du build hook Netlify — rempli automatiquement au déploiement. Permet de redéployer le site après chaque modification.",
+  "netlify_hook": ""
+}
